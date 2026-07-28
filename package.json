@@ -1,9 +1,19 @@
 {
+  "type": "module",
   "scripts": {
-    "docs:update": "node scripts/update_docs.mjs"
+    "docs:update": "node scripts/update_docs.mjs",
+    "docs:convert": "node scripts/convert_to_vitepress.mjs",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
-    "puppeteer": "^25.4.0"
+    "jsdom": "^26.1.0",
+    "puppeteer": "^25.4.0",
+    "turndown": "^7.2.4"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0"
   },
   "allowScripts": {
     "puppeteer@25.4.0": true
