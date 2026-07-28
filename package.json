@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "docs:update": "node scripts/update_docs.mjs"
+  },
+  "dependencies": {
+    "puppeteer": "^25.4.0"
+  },
+  "allowScripts": {
+    "puppeteer@25.4.0": true
+  }
+}

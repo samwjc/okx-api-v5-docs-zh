@@ -1,0 +1,2025 @@
+<!DOCTYPE html><html><head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>经纪商申请  – 欧易 API接入指南 | 欧易技术对接 | 欧易</title>
+    <meta name="description" content="欢迎来到欧易API接入指南,欧易技术对接。欧易是全球领先的比特币交易平台，使用银行级别的SSL加密和冷存储等技术，为用户提供安全稳定的数字资产服务。">
+    <meta name="keywords" content="欧易API接入指南,欧易技术对接">
+
+    <link rel="shortcut icon" href="https://static.coinall.ltd/cdn/assets/imgs/221/A73079733B3789DA.png" type="image/png">
+
+      <link rel="canonical" href="https://www.okx.com/docs-v5/broker_zh/">
+      <link rel="alternate" href="https://www.okx.com/docs-v5/broker_zh/" hreflang="zh-Hans">
+      <link rel="alternate" href="https://www.okx.com/docs-v5/broker_en/" hreflang="en">
+      <link rel="alternate" href="https://www.okx.com/docs-v5/broker_en/" hreflang="x-default">
+
+
+
+
+
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <style>/*! normalize.css v3.0.2 | MIT License | git.io/normalize */html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:0.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-webkit-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code{font-family:sans-serif}kbd,pre,samp{font-family:monospace, monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{-webkit-box-sizing:border-box;box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}.content h1,.content h2,.content h3,.content h4,.content h5,.content h6,html,body{font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";font-size:14px}.content h1,.content h2,.content h3,.content h4,.content h5,.content h6{font-weight:bold}.content code,.content pre{font-family:Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;font-size:12px;line-height:1.5}.content code{word-break:break-all;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto}header{display:flex;justify-content:space-between;align-items:center;height:48px;background:#171f30;position:fixed;width:100%;z-index:100;padding:0 24px;-webkit-box-sizing:border-box;box-sizing:border-box;border-bottom:2px solid black}header .logo{height:36px;vertical-align:middle}body .content{overflow-x:hidden}body header .toc-link{color:#2676ff;width:80px;line-height:26px;border:1px solid #2676ff;border-radius:4px;-webkit-box-sizing:border-box;box-sizing:border-box;text-align:center;vertical-align:middle}body header .switch-language{width:80px}body .toc-left{display:flex;height:100%;align-items:center}body .toc-split-line{background:#31394a;width:1px;height:40%;margin:10px 32px 10px 24px}body .toc-nav-list{font-weight:500;font-size:14px;padding:0;margin:0}body .toc-nav-list li{margin-right:32px;border-bottom:2px solid transparent;height:43px;line-height:43px;display:inline-block;cursor:pointer}body .toc-nav-list li a{color:#646f84;text-decoration:none;display:block;height:100%}body .toc-nav-list li:last-child{margin-right:0}body .toc-nav-list li.selected{border-bottom-color:#ced1d9}body .toc-nav-list li.selected a{color:#ced1d9}body .toc-nav-dropdown{display:none;outline:none;color:#fff;border-radius:4px;padding:4px 8px;border:thin solid #555e71;background:#181e2a;-webkit-box-shadow:0 0 0 0 transparent;box-shadow:0 0 0 0 transparent}@media screen and (max-width: 768px){body .toc-nav-list{display:none}body .toc-nav-dropdown{display:block}}body .toc-wrapper{background-color:#181e2a;top:48px}body .toc-wrapper>.search input{background-color:#181e2a;border-color:#31394a}body .toc-wrapper>.search-results{background-color:#101621;color:#3f475a}body .toc-link,body .toc-footer li{color:#dde1eb}body .toc-wrapper li{line-height:40px}body .toc-wrapper .toc-link.active{background-color:#31394a}body .toc-wrapper .toc-h1{font-size:14px;font-weight:500}body .toc-wrapper .toc-h2{font-size:14px}body .toc-wrapper .toc-list-h2,body .toc-wrapper .toc-list-h3{background-color:unset}body .toc-wrapper .toc-link.active-parent{background-color:unset}body .content>h1[id],body .content>h2[id],body .content>h3[id]{margin-top:0;padding-top:calc(48px + 1em);z-index:1}body .content>h1,body .content>h2,body .content>h3,body .content>h4{padding:0 28px 8px}body .content h1{margin-left:28px;margin-right:calc(40% + 28px);border-top-color:transparent;border-bottom-color:#d8dce5;background-color:transparent;padding-top:1.2em;padding-left:0}body .content h2,body .content h3{border-top-color:transparent;border-bottom-color:transparent;background-color:transparent;padding-top:1.2em}body .content h2{margin-bottom:8px}body .content h4{font-size:14px}body .content p{color:#3f475a;margin-bottom:0}body .content table th{border-bottom:1px solid #d8dce5}body .content table tr:last-child{border-bottom:1px solid #d8dce5}body .content table td{border:1px solid #d8dce5;vertical-align:middle}body .content table td:first-child{padding:10px;white-space:nowrap}body .content code{background-color:rgba(31,41,51,0.08)}body .content aside{padding:10px 12px;margin-right:calc(40% + 28px);margin-left:28px;border-radius:4px}body .content aside.warning{color:#e35e5e;background-color:#ffe7e7}body .content aside.notice{color:#205fec;background-color:#e4ecff}body .page-wrapper .dark-box{top:48px;background-color:#181e2a}body .page-wrapper .lang-selector{background-color:#101621;border-bottom:5px solid #181e2a}body .lang-selector a.active{background-color:#181e2a}body .content blockquote>p,body .content pre,body .content blockquote{background-color:#101621}body .highlight,body .highlight .w{background-color:unset}body.is-agent .page-wrapper .dark-box{display:none}body.is-agent .page-wrapper{background-color:#0d1117}body.is-agent header{background:#0d1117;border-bottom:1px solid #21262d}body.is-agent .toc-split-line{background:#21262d}body.is-agent .toc-wrapper{background-color:#0d1117;border-right:1px solid #21262d}body.is-agent .toc-wrapper>.search input{background-color:#161b22;border-color:#21262d;color:#e6edf3}body.is-agent .toc-link,body.is-agent .toc-footer li{color:#8b949e}body.is-agent .toc-wrapper .toc-link:hover{color:#e6edf3}body.is-agent .toc-wrapper .toc-link.active{background-color:#161b22;color:#e6edf3}body.is-agent .toc-wrapper .toc-link.active-parent{background-color:transparent;color:#c9d1d9}body.is-agent .content>h1,body.is-agent .content>h2,body.is-agent .content>h3,body.is-agent .content>h4,body.is-agent .content>h5,body.is-agent .content>h6,body.is-agent .content>p,body.is-agent .content>table,body.is-agent .content>ul,body.is-agent .content>ol,body.is-agent .content>aside,body.is-agent .content>dl{margin-right:0;color:#c9d1d9}body.is-agent .content h1{margin-right:0;color:#ffffff;background-color:transparent;background-image:none;border-top-color:transparent;border-bottom-color:#21262d}body.is-agent .content h2,body.is-agent .content h3{color:#ffffff;background-color:transparent;background-image:none;border-top-color:transparent}body.is-agent .content h4{color:#e6edf3}body.is-agent .content p{color:#c9d1d9}body.is-agent .content ul,body.is-agent .content ol{color:#c9d1d9}body.is-agent .content strong{color:#ffffff}body.is-agent .content a{color:#58a6ff}body.is-agent .content a:hover{color:#79b8ff}body.is-agent .content code{background-color:rgba(110,118,129,0.2);color:#e6edf3}body.is-agent .content pre,body.is-agent .content blockquote{float:none;width:auto;clear:both;margin-left:0;margin-right:0;margin-top:1em;margin-bottom:1em;-webkit-box-sizing:border-box;box-sizing:border-box;background-color:#161b22;border:1px solid #21262d;border-radius:6px;scrollbar-width:thin;scrollbar-color:#30363d #161b22}body.is-agent .content pre::-webkit-scrollbar,body.is-agent .content blockquote::-webkit-scrollbar{height:6px;width:6px}body.is-agent .content pre::-webkit-scrollbar-track,body.is-agent .content blockquote::-webkit-scrollbar-track{background:#161b22;border-radius:0 0 6px 6px}body.is-agent .content pre::-webkit-scrollbar-thumb,body.is-agent .content blockquote::-webkit-scrollbar-thumb{background-color:#30363d;border-radius:3px}body.is-agent .content pre::-webkit-scrollbar-thumb:hover,body.is-agent .content blockquote::-webkit-scrollbar-thumb:hover{background-color:#484f58}body.is-agent .content table th{background-color:#161b22;color:#ffffff;border-color:#21262d}body.is-agent .content table td{color:#c9d1d9;border-color:#21262d;background-color:transparent}body.is-agent .content table tr:nth-child(even) td,body.is-agent .content table tr:nth-child(odd) td{background-color:rgba(255,255,255,0.03)}body.is-agent .content table tr:last-child{border-bottom-color:#21262d}body.is-agent .content aside{margin-right:0}@media (max-width: 930px){body .content h1{margin-right:28px}body .content aside{margin-right:28px}body #nav-button{top:48px}body .toc-link{padding-top:unset;padding-bottom:unset}}html,body{color:#3F475A;padding:0;margin:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background-color:#F3F7F9;height:100%;-webkit-text-size-adjust:none}#toc>ul>li>a>span{float:right;background-color:#2484ff;border-radius:40px;width:20px}.toc-wrapper{-webkit-transition:left 0.3s ease-in-out;transition:left 0.3s ease-in-out;overflow-y:auto;overflow-x:hidden;position:fixed;z-index:30;top:0;left:0;bottom:0;width:230px;background-color:#2E3336;font-size:13px;font-weight:bold}.toc-wrapper .lang-selector{display:none}.toc-wrapper .lang-selector a{padding-top:0.5em;padding-bottom:0.5em}.toc-wrapper .logo{display:block;max-width:100%;margin-bottom:0px}.toc-wrapper>.search{position:relative}.toc-wrapper>.search input{background:#2E3336;border-width:0 0 1px 0;border-color:#666;padding:6px 0 6px 20px;-webkit-box-sizing:border-box;box-sizing:border-box;margin:10px 15px;width:200px;outline:none;color:#fff;border-radius:0}.toc-wrapper>.search:before{position:absolute;top:17px;left:15px;color:#fff}.toc-wrapper .search-results{margin-top:0;-webkit-box-sizing:border-box;box-sizing:border-box;height:0;overflow-y:auto;overflow-x:hidden;-webkit-transition-property:height, margin;transition-property:height, margin;-webkit-transition-duration:180ms;transition-duration:180ms;-webkit-transition-timing-function:ease-in-out;transition-timing-function:ease-in-out;background:#1E2224}.toc-wrapper .search-results.visible{height:30%;margin-bottom:1em}.toc-wrapper .search-results li{margin:1em 15px;line-height:1}.toc-wrapper .search-results a{color:#fff;text-decoration:none}.toc-wrapper .search-results a:hover{text-decoration:underline}.toc-wrapper ul,.toc-wrapper li{list-style:none;margin:0;padding:0;line-height:28px}.toc-wrapper li{color:#fff;-webkit-transition-property:background;transition-property:background;-webkit-transition-timing-function:linear;transition-timing-function:linear;-webkit-transition-duration:200ms;transition-duration:200ms}.toc-wrapper .toc-link.active{background-color:#0F75D4;color:#fff}.toc-wrapper .toc-link.active-parent{background-color:#1E2224;color:#fff}.toc-wrapper .toc-list-h2{display:none;background-color:#1E2224;font-weight:500}.toc-wrapper .toc-h2{padding-left:25px;font-size:12px}.toc-wrapper .toc-list-h3{display:none;background-color:#1E2224}.toc-wrapper .toc-h3{padding-left:40px;font-size:12px}.toc-wrapper .toc-footer{padding:1em 0;margin-top:1em;border-top:1px dashed #666}.toc-wrapper .toc-footer li,.toc-wrapper .toc-footer a{color:#fff;text-decoration:none}.toc-wrapper .toc-footer a:hover{text-decoration:underline}.toc-wrapper .toc-footer li{font-size:0.8em;line-height:1.7;text-decoration:none}.toc-link,.toc-footer li{padding:0 15px 0 15px;display:block;overflow-x:hidden;white-space:nowrap;text-overflow:ellipsis;text-decoration:none;color:#fff;-webkit-transition-property:background;transition-property:background;-webkit-transition-timing-function:linear;transition-timing-function:linear;-webkit-transition-duration:130ms;transition-duration:130ms}#nav-button{padding:0 1.5em 5em 0;display:none;position:fixed;top:0;left:0;z-index:100;color:#000;text-decoration:none;font-weight:bold;opacity:0.7;line-height:16px;-webkit-transition:left 0.3s ease-in-out;transition:left 0.3s ease-in-out}#nav-button span{display:block;padding:6px 6px 6px;background-color:rgba(243,247,249,0.7);-webkit-transform-origin:0 0;transform-origin:0 0;-webkit-transform:rotate(-90deg) translate(-100%, 0);transform:rotate(-90deg) translate(-100%, 0);border-radius:0 0 0 5px}#nav-button img{height:16px;vertical-align:bottom}#nav-button:hover{opacity:1}#nav-button.open{left:230px}.page-wrapper{margin-left:230px;position:relative;z-index:10;background-color:#F3F7F9;min-height:100%;padding-bottom:1px}.page-wrapper .dark-box{width:40%;background-color:#2E3336;position:absolute;right:0;top:0;bottom:0}.page-wrapper .lang-selector{position:fixed;z-index:50;border-bottom:5px solid #2E3336}.lang-selector{display:flex;background-color:#1E2224;width:100%;font-weight:bold;overflow-x:auto}.lang-selector a{display:inline;color:#fff;text-decoration:none;padding:0 10px;line-height:30px;outline:0}.lang-selector a:active,.lang-selector a:focus{background-color:#111;color:#fff}.lang-selector a.active{background-color:#2E3336;color:#fff}.lang-selector:after{content:"";clear:both;display:block}.content{-webkit-transform:translateZ(0);position:relative;z-index:30}.content:after{content:"";display:block;clear:both}.content>h1,.content>h2,.content>h3,.content>h4,.content>h5,.content>h6,.content>p,.content>table,.content>ul,.content>ol,.content>aside,.content>dl{margin-right:40%;padding:0 28px;-webkit-box-sizing:border-box;box-sizing:border-box;display:block}.content>ul,.content>ol{padding-left:43px}.content>h1,.content>h2,.content>h3,.content>div{clear:both}.content h1{font-size:24px;color:#1F2533;padding-top:0.5em;padding-bottom:0.5em;margin-bottom:21px;margin-top:2em;border-top:1px solid #ccc;border-bottom:1px solid #ccc;background-color:#fdfdfd}.content h1:first-child,.content div:first-child+h1{border-top-width:0;margin-top:0}.content h2{font-size:18px;color:#1F2533;margin-top:4em;margin-bottom:0;border-top:1px solid #ccc;padding-top:1.2em;padding-bottom:1.2em;background-image:-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.2)), to(rgba(255,255,255,0)));background-image:linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0))}.content h3{font-size:16px;color:#3F475A;margin-top:0.5em;margin-bottom:0;padding-top:1.2em;padding-bottom:1.2em;background-image:-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.2)), to(rgba(255,255,255,0)));background-image:linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0))}.content h1+h2,.content h1+div+h2{margin-top:-21px;border-top:none}.content h4,.content h5,.content h6{font-size:15px;margin-top:2.5em;margin-bottom:0.8em}.content h4,.content h5,.content h6{font-size:10px}.content hr{margin:2em 0;border-top:2px solid #2E3336;border-bottom:2px solid #F3F7F9}.content table{margin-bottom:1em;overflow:auto}.content table th,.content table td{text-align:left;vertical-align:top;line-height:1.6}.content table th code,.content table td code{white-space:nowrap}.content table th{padding:5px 10px;border-bottom:1px solid #ccc;vertical-align:bottom}.content table td{padding:10px}.content table tr:last-child{border-bottom:1px solid #ccc}.content table tr:nth-child(odd)>td{background-color:white}.content table tr:nth-child(even)>td{background-color:#fbfcfd}.content dt{font-weight:bold}.content dd{margin-left:15px}.content p,.content li,.content dt,.content dd{line-height:1.6;margin-top:0}.content img{max-width:100%}.content code{background-color:rgba(0,0,0,0.05);padding:3px;border-radius:3px}.content pre>code{background-color:transparent;padding:0}.content aside{padding-top:1em;padding-bottom:1em;margin-top:1.5em;margin-bottom:1.5em;background:#8fbcd4;line-height:1.6}.content aside.warning{background-color:#c97a7e}.content aside.success{background-color:#6ac174}.content aside:before{vertical-align:middle;padding-right:0.5em;font-size:14px}.content .search-highlight{padding:2px;margin:-3px;border-radius:4px;border:1px solid #f7e633;background:-webkit-gradient(linear, right bottom, left top, from(#f7e633), to(#f1d32f));background:linear-gradient(to top left, #f7e633 0%, #f1d32f 100%)}.content>div.highlight{clear:none}.content pre,.content blockquote{background-color:#1E2224;color:#fff;margin:0;width:40%;float:right;clear:right;-webkit-box-sizing:border-box;box-sizing:border-box}.content pre>p,.content blockquote>p{margin:0}.content pre a,.content blockquote a{color:#fff;text-decoration:none;border-bottom:dashed 1px #ccc}.content pre{padding-top:2em;padding-bottom:2em;padding:2em 28px}.content blockquote>p{background-color:#191D1F;padding:13px 2em;color:#eee}@media (max-width: 930px){.toc-wrapper{left:-230px}.toc-wrapper.open{left:0}.page-wrapper{margin-left:0}#nav-button{display:block}.toc-link{padding-top:0.3em;padding-bottom:0.3em}}@media (max-width: 700px){.dark-box{display:none}.content>h1,.content>h2,.content>h3,.content>h4,.content>h5,.content>h6,.content>p,.content>table,.content>ul,.content>ol,.content>aside,.content>dl{margin-right:0}.toc-wrapper .lang-selector{display:block}.page-wrapper .lang-selector{display:none}.content pre,.content blockquote{width:auto;float:none}.content>pre+h1,.content>blockquote+h1,.content>pre+h2,.content>blockquote+h2,.content>pre+h3,.content>blockquote+h3,.content>pre+h4,.content>blockquote+h4,.content>pre+h5,.content>blockquote+h5,.content>pre+h6,.content>blockquote+h6,.content>pre+p,.content>blockquote+p,.content>pre+table,.content>blockquote+table,.content>pre+ul,.content>blockquote+ul,.content>pre+ol,.content>blockquote+ol,.content>pre+aside,.content>blockquote+aside,.content>pre+dl,.content>blockquote+dl{margin-top:28px}}.highlight .c,.highlight .cm,.highlight .c1,.highlight .cs{color:#909090}.highlight,.highlight .w{background-color:#1E2224}.copy-clipboard{float:right;fill:#9daab6;cursor:pointer;opacity:0.4;height:18px;width:18px}.copy-clipboard:hover{opacity:0.8}</style>
+    <style media="print">/*! normalize.css v3.0.2 | MIT License | git.io/normalize */html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:0.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-webkit-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code{font-family:sans-serif}kbd,pre,samp{font-family:monospace, monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{-webkit-box-sizing:border-box;box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}.content h1,.content h2,.content h3,.content h4,body{font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";font-size:14px}.content h1,.content h2,.content h3,.content h4{font-weight:bold}.content pre,.content code{font-family:Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;font-size:12px;line-height:1.5}.content pre,.content code{word-break:break-all;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto}.tocify,.toc-footer,.lang-selector,.search,#nav-button{display:none}.tocify-wrapper>img{margin:0 auto;display:block}.content{font-size:12px}.content pre,.content code{border:1px solid #999;border-radius:5px;font-size:0.8em}.content pre code{border:0}.content pre{padding:1.3em}.content code{padding:0.2em}.content table{border:1px solid #999}.content table tr{border-bottom:1px solid #999}.content table td,.content table th{padding:0.7em}.content p{line-height:1.5}.content a{text-decoration:none;color:#000}.content h1{font-size:2.5em;padding-top:0.5em;padding-bottom:0.5em;margin-top:1em;margin-bottom:21px;border:2px solid #ccc;border-width:2px 0;text-align:center}.content h2{font-size:1.8em;margin-top:2em;border-top:2px solid #ccc;padding-top:0.8em}.content h1+h2,.content h1+div+h2{border-top:none;padding-top:0;margin-top:0}.content h3,.content h4{font-size:0.8em;margin-top:1.5em;margin-bottom:0.8em;text-transform:uppercase}.content h5,.content h6{text-transform:uppercase}.content aside{padding:1em;border:1px solid #ccc;border-radius:5px;margin-top:1.5em;margin-bottom:1.5em;line-height:1.6}.content aside:before{vertical-align:middle;padding-right:0.5em;font-size:14px}@media print{.copy-clipboard{display:none}}header .lang{display:none;width:78px;height:26px;line-height:26px;text-align:center;border:1px solid #383f66;color:#adc1d5;text-decoration:none;border-radius:3px;-webkit-transition:all 300ms;transition:all 300ms}header .lang:hover{color:#357ce1;border-color:#357ce1}</style>
+      <script>function copyToClipboard(e){var t=document.createElement("textarea");t.value=e.textContent,document.body.appendChild(t),t.select(),document.execCommand("copy"),document.body.removeChild(t)}function setupCodeCopy(){for(var e=document.querySelectorAll("pre.highlight"),t=0;t<e.length;t++){var n=e[t],o=document.createElement("div");o.className="copy-clipboard",o.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg>',n.insertBefore(o,n.firstChild),o.addEventListener("click",function(){copyToClipboard(this.parentNode.children[1])})}}function initMenuActive(e){document.querySelectorAll(".toc-nav-list li").forEach(function(t,n){t.classList.remove("selected"),n===e&&t.classList.add("selected")});var t=document.querySelector(".toc-nav-dropdown");if(t)for(var n=t.options,o=0;o<n.length;o++)n[o].selected=o===e}function init(e){initMenuActive(e)}function adjustLanguageSelectorWidth(){var e=document.querySelector(".dark-box > .lang-selector");e&&e.parentElement&&(e.style.width=e.parentElement.offsetWidth+"px")}!function(){if("ontouchstart"in window){var e,t,n,o,r,i,a={};e=function(e,t){return Math.abs(e[0]-t[0])>5||Math.abs(e[1]-t[1])>5},t=function(e){this.startXY=[e.touches[0].clientX,e.touches[0].clientY],this.threshold=!1},n=function(t){if(this.threshold)return!1;this.threshold=e(this.startXY,[t.touches[0].clientX,t.touches[0].clientY])},o=function(t){if(!this.threshold&&!e(this.startXY,[t.changedTouches[0].clientX,t.changedTouches[0].clientY])){var n=t.changedTouches[0],o=document.createEvent("MouseEvents");o.initMouseEvent("click",!0,!0,window,0,n.screenX,n.screenY,n.clientX,n.clientY,!1,!1,!1,!1,0,null),o.simulated=!0,t.target.dispatchEvent(o)}},r=function(e){var t=Date.now(),n=t-a.time,o=e.clientX,r=e.clientY,c=[Math.abs(a.x-o),Math.abs(a.y-r)],s=i(e.target,"A")||e.target,l=s.nodeName,u="A"===l,d=window.navigator.standalone&&u&&e.target.getAttribute("href");if(a.time=t,a.x=o,a.y=r,(!e.simulated&&(n<500||n<1500&&c[0]<50&&c[1]<50)||d)&&(e.preventDefault(),e.stopPropagation(),!d))return!1;d&&(window.location=s.getAttribute("href")),s&&s.classList&&(s.classList.add("energize-focus"),window.setTimeout(function(){s.classList.remove("energize-focus")},150))},i=function(e,t){for(var n=e;n!==document.body;){if(!n||n.nodeName===t)return n;n=n.parentNode}return null},document.addEventListener("touchstart",t,!1),document.addEventListener("touchmove",n,!1),document.addEventListener("touchend",o,!1),document.addEventListener("click",r,!0)}}(),function(){"use strict";function e(e){if(!e)return"";try{return e=e.replace(/^\?/,""),e.split("&").map(function(e){var t=e.split("=");if(2!==t.length)return"";var n=decodeURIComponent(t[0]),o=decodeURIComponent(t[1]);return n=n.replace(/[^a-zA-Z0-9-_]/g,""),o=o.replace(/[^a-zA-Z0-9-_]/g,""),n?n+"="+o:""}).filter(Boolean).join("&")}catch(e){return console.error("Search sanitization failed:",e),""}}function t(e){if(!e)return"";try{return e=e.replace(/^#+/,""),"#"+e.replace(/[^a-zA-Z0-9-_]/g,"")}catch(e){return console.error("Hash sanitization failed:",e),""}}window.XSS={sanitizeLocation:function(){return{search:e(location.search),hash:t(location.hash)}}},Object.freeze(XSS)}(),document.addEventListener?document.addEventListener("DOMContentLoaded",setupCodeCopy):window.attachEvent("onload",setupCodeCopy),function(){"use strict";function e(e,t){var n=!1;return function(){!1===n&&(setTimeout(function(){e(),n=!1},t),n=!0)}}function t(){var e=document.querySelector(".toc-wrapper"),t=document.getElementById("nav-button");e&&e.classList.remove("open"),t&&t.classList.remove("open")}function n(){return window.scrollY||window.pageYOffset||document.documentElement.scrollTop}function o(o,a,c,s){function l(){f={},v=document.documentElement.scrollHeight,g=window.innerHeight,o.querySelectorAll(a).forEach(function(e){var t=e.getAttribute("href");if(t&&"#"===t[0]){var o=document.getElementById(t.substring(1));o&&(f[t]=o.getBoundingClientRect().top+n())}})}function u(){var e=n()+s;e+g>=v&&(e=v+1e3);var t=null;for(var l in f)(f[l]<e&&f[l]>f[t]||null===t)&&(t=l);if(e==s&&!i){if(t=XSS.sanitizeLocation().hash,i=!0,t&&"#"!==t){var u=document.getElementById(t.substring(1));u&&u.scrollIntoView({behavior:"auto",block:"start"})}}var d=o.querySelector("[href='"+t+"']");if(d&&!d.classList.contains("active")){o.querySelectorAll(".active").forEach(function(e){e.classList.remove("active")});o.querySelectorAll(".active-parent").forEach(function(e){e.classList.remove("active-parent")}),d.classList.add("active");for(var h=[],p=d.parentElement;p;)p.matches&&p.matches(c)&&(p.classList.add("active"),h.push(p)),p=p.parentElement;h.forEach(function(e){var t=e.previousElementSibling;t&&t.matches&&t.matches(a)&&t.classList.add("active-parent")});var w=d.nextElementSibling;w&&w.matches&&w.matches(c)&&w.classList.add("active");o.querySelectorAll(c).forEach(function(e){e.classList.contains("active")?e.style.display="block":e.style.display="none"}),window.history.replaceState&&window.history.replaceState(null,"",t);var y=d.getAttribute("data-title");void 0!==y&&y&&y.length>0?document.title=y.replace(r,"")+" \u2013 "+m:document.title=m}}function d(){l(),u();var n=document.getElementById("nav-button");n&&n.addEventListener("click",function(e){document.querySelector(".toc-wrapper").classList.toggle("open"),this.classList.toggle("open"),e.preventDefault()}),document.querySelector(".page-wrapper").addEventListener("click",t),o.querySelectorAll(".toc-link").forEach(function(e){e.addEventListener("click",function(){t(),h()})}),window.addEventListener("scroll",e(u,200)),window.addEventListener("resize",e(l,200))}function h(){if(!p){p=!0;(window.requestAnimationFrame||function(e){return setTimeout(e,0)})(function(){u(),p=!1})}}var f={},v=0,g=0,m=document.title;Element.prototype.closestAll||(Element.prototype.closestAll=function(e){for(var t=[],n=this;n;)n.matches(e)&&t.push(n),n=n.parentElement;return t});var p=!1;d(),window.recacheHeights=l,window.refreshToc=u}var r=/<[^>]*>/g,i=!1;window.loadToc=o}(),function(){"use strict";function e(e){try{return localStorage.getItem(e)}catch(e){return console.error("Storage access failed:",e),null}}function t(e,t){try{return localStorage.setItem(e,t),!0}catch(e){return console.error("Storage write failed:",e),!1}}function n(e){return e&&"string"==typeof e&&e.length<=h&&/^[a-zA-Z0-9-_]+$/.test(e)&&-1!==u.indexOf(e)}function o(e){if(n(e))try{document.querySelectorAll(".lang-selector a").forEach(function(t){t.classList.remove("active"),t.getAttribute("data-language-name")===e&&t.classList.add("active")}),u.forEach(function(e){var t=document.querySelectorAll(".highlight.tab-"+e),n=document.querySelectorAll(".lang-specific."+e);t.forEach(function(e){e.style.display="none"}),n.forEach(function(e){e.style.display="none"})});var t=document.querySelectorAll(".highlight.tab-"+e),o=document.querySelectorAll(".lang-specific."+e);t.forEach(function(e){e.style.display="block"}),o.forEach(function(e){e.style.display="block"}),window.recacheHeights&&window.recacheHeights();var r=XSS.sanitizeLocation(),i=r.hash;if(i){var a=document.querySelector(i);a&&a.scrollIntoView(!0)}}catch(e){console.error("Language activation failed:",e)}}function r(e){if("string"!=typeof e)return{};try{return e?(e=e.trim().replace(/^(\?|#|&)/,""),e?e.split("&").reduce(function(e,t){var n=t.replace(/\+/g," ").split("=");if(2!==n.length)return e;var o=n[0],r=n[1];try{if(o=decodeURIComponent(o),r=decodeURIComponent(r),!o)return e;e.hasOwnProperty(o)?Array.isArray(e[o])?e[o].push(r):e[o]=[e[o],r]:e[o]=r}catch(e){console.error("Error parsing URL parameter:",e)}return e},{}):{}):{}}catch(e){return console.error("Error parsing URL:",e),{}}}function i(e){return e?Object.keys(e).sort().map(function(t){var n=e[t];return Array.isArray(n)?n.sort().map(function(e){return encodeURIComponent(t)+"="+encodeURIComponent(e)}).join("&"):encodeURIComponent(t)+"="+encodeURIComponent(n)}).join("&"):""}function a(){var e=XSS.sanitizeLocation(),t=e.search;if(!t)return!1;var o=r(t),i=o.language;return!!n(i)&&i}function c(e){var t=XSS.sanitizeLocation(),n=t.search,o=r(n);return o.language=e,i(o)}function s(e){if(n(e)&&history)try{var t=c(e),o=XSS.sanitizeLocation(),r=o.hash,i="?"+t+r;history.pushState({},"",i)}catch(e){console.error("Error pushing URL:",e)}}function l(n){var r=e(d);u=n;var i=a();i?(o(i),t(d,i)):o(null!==r&&-1!==u.indexOf(r)?r:u[0]),document.querySelectorAll(".lang-selector a").forEach(function(e){e.addEventListener("click",function(e){var n=this.getAttribute("data-language-name");t(d,n),s(n),o(n),e.preventDefault()})})}var u=[],d="language",h=50;window.setupLanguages=l,window.activateLanguage=o,window.getLanguageFromQueryString=a}(),document.addEventListener("DOMContentLoaded",function(){function e(e){var t=e.target;if(t.classList.contains("toc-link"))if(t.classList.contains("active-parent"))setTimeout(function(){var e=t.nextElementSibling;e&&"UL"===e.tagName&&(e.style.display="none")});else{var n=t.nextElementSibling;n&&"UL"===n.tagName&&(n.style.display="none"===n.style.display?"block":"none")}}function t(){var e=document.querySelector(".page-wrapper .content");e&&(e.style.paddingBottom=window.innerHeight-100+"px")}function n(){++l===u&&(window.recacheHeights&&window.recacheHeights(),window.refreshToc&&window.refreshToc())}var o=document.getElementById("toc");o&&loadToc(o,".toc-link",".toc-list-h2, .toc-list-h3",10);var r=document.querySelector(".toc-wrapper");r&&r.addEventListener("click",e),t(),window.addEventListener("resize",function(){t(),adjustLanguageSelectorWidth()});var i=document.body;if(i){var a=i.getAttribute("data-languages");a&&setupLanguages(JSON.parse(a))}var c=document.querySelector(".content");if(c){for(var s=c.getElementsByTagName("img"),l=0,u=s.length,d=0;d<u;d++)s[d].complete?n():(s[d].addEventListener("load",n),s[d].addEventListener("error",n));0===u&&(window.recacheHeights&&window.recacheHeights(),window.refreshToc&&window.refreshToc())}setTimeout(function(){window.location.hash&&window.refreshToc&&window.refreshToc()},100),adjustLanguageSelectorWidth()}),window.addEventListener("popstate",function(){var e=getLanguageFromQueryString();e&&activateLanguage(e)});</script>
+
+    <script>
+      var currentHref = window.location.href;
+      var pathname = window.location.pathname;
+      var pathArr = pathname.split('/').reverse();
+      var modules = ['zh', 'agent_zh', 'outcomes_zh', 'broker_zh', 'trick_zh', 'log_zh'];
+      var moduleType = pathArr[0].replace('.html', '');
+      var moduleIndex = modules.indexOf(moduleType);
+      var switchLanguage = true;
+
+      function sanitizePath(pathArr) {
+        pathArr = pathArr.filter(function(segment) { return segment !== '@'; });
+        var path = pathArr.join('/');
+        path = path.replace(/\/+/g, '/');
+        return path;
+      }
+
+      // Initialize when DOM is loaded
+      if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', () => {
+          init(moduleIndex);
+        });
+      } else {
+        // Fallback for older browsers
+        window.attachEvent('onload', () => {
+          init(moduleIndex);
+        });
+      }
+
+      function changeHyperlink() {
+        if (switchLanguage) {
+          switchLanguage = false;
+          var hash = window.location.hash;
+          var newPath = pathname.replace("zh","en") + hash;
+          window.location.href = sanitizePath(newPath.split('/'));
+        }
+      }
+
+      function changeMenuLink(type) {
+        pathArr[1] = type;
+        window.location.href = sanitizePath(pathArr.reverse());
+      }
+    </script>
+    <style>
+        .content aside.notice:before {
+                content: '';
+                display: inline-block;
+                height: 16px;
+                width: 16px;
+                background-image: url("data:image/image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAD1BMVEUAAAAgX+wgYOsgYOsgX+zxKDX3AAAABHRSTlMAv4BAMM4GbAAAAIhJREFUKM+NkcsRgCAMRP0V4GgK0BkK8GABBum/JgdYFxQO5AL7CEtm6Rpr3EWXI9PifG0/7ewLToe60eBY0WaCYotJQL0ewnaN+OCNGQvfsAITWqRRJGzANYGJIPZemKYGJAdaAwaAz54AHKzHiQkccQAgRflMTpPoVERYD5kJKL9qgC6+sq0e+31Meuswx+MAAAAASUVORK5CYII=");
+                background-repeat: no-repeat;
+                background-size: auto 100%;
+                padding: 0;
+                margin-right: 7px;
+                vertical-align: text-bottom;
+              }
+          .content aside.warning:before {
+              content: '';
+              display: inline-block;
+              height: 16px;
+              width: 16px;
+              background-image: url("data:image/image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAD1BMVEUAAADjYGDjXl7jXV3jXl6rsL0UAAAABHRSTlMAQIC/o1TdDAAAAIpJREFUKM+dkd0NgCAMhAEdwL8BNHEAjQ7gz+0/k4HDFsML8Z7gS3twrSlW236u3Q7co94dgoRYRDURzAC2DcCVFBijJbWCQzrQWEgPCMTWKeDLVQoW70ng8LoOrCU4/wGarr2YVki0yMduHYlNPRiOJw1X86can8F3htWeQLMh52sQ4hc1Zass1ANrMkLgf7knqgAAAABJRU5ErkJggg==");
+              background-repeat: no-repeat;
+              background-size: auto 100%;
+              padding: 0;
+              margin-right: 7px;
+            vertical-align: text-bottom;
+            }
+            .toc-wrapper .search:before {
+                content: '';
+                height: 12px;
+                width: 12px;
+                background-image: url("data:image/image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAD1BMVEUAAAD///////////////+PQt5oAAAABHRSTlMAgL9ARyeO/QAAAKpJREFUKM9lkdENwyAMRE3oAE3FAFFhABQxQEpu/5naXjGulfsyjztjZPkq7sBaZSoWfPS6/59JFDTAkQgg17gCqAQ3gOkAHASJVhadFzSw+mUW616wscVhz51MjoSaC4NjgE4gHsAA6yvwEd80ECRsE/DZpoNxRj96Ioj2uVGV+f1RLONiBwEzWLkJDTeoLEz1pJZQeK7BdvN49lxFpsVmx2kn24S3iFfKb13fLBtfa1iNAAAAAElFTkSuQmCC");
+              background-repeat: no-repeat;
+              background-size: auto 100%;
+              top: 19px
+            }
+        </style>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;]">
+    <a href="#" id="nav-button">
+      <!--<span>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAAAnRSTlMAAHaTzTgAAAAZSURBVHgBYxgswBIIsLFGrIJRBaMKBh4AAE3cQCEvEU3+AAAAAElFTkSuQmCC" alt="Navbar">
+      </span>-->
+       <span>
+         导航
+         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAAAnRSTlMAAHaTzTgAAAAZSURBVHgBYxgswBIIsLFGrIJRBaMKBh4AAE3cQCEvEU3+AAAAAElFTkSuQmCC" alt="">
+       </span>
+    </a>
+
+    <header>
+      <div class="toc-left">
+        <a href="/">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAABICAYAAAB4M164AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAiXSURBVHgB7Z1vetQ2EMYnffK94QSYE5D2ACDgewnt97JwAf4coEk4AJALkA0HaNMegLg9QEkP0OJcoKQXQNW7lrOKVhrJspdswvyeR9nElmzv7usZaTRWiARBEARBEARBEARBEARBEARBEARBEGiNhM+O1hovyhaf6draWkNfKOvmw5mY14rKeW0+wFMqxJz/iXm5RmV8MOc+oEuEFeMdU94x1XZovHNt2LJSxG66dVP2aRi1Lb0xH5gyL69pGKMI0lxLZV62adjNGWLPfPiHzt/wSg8jdaGg4pv73IFaMX5jyp+0guj2Ar81n82xu32dhI6npkxofPCBH3rbbkbqQqzb1mvk8tGUx/4Xa9mk1WbBcosg5yzdrTkudDNxHX2u5bo93jFdAUSQ+TRUhi8UReNTKkZY7r9oecDS97rRRZD5PDJusaZhwCXfZvafUrgPyVnN04i7TgFz/atpO6UlYLxB11cWQa44MUFCIHd8cVk3/8CUnyPtfqcrhAgyn00rDpfGD1+YOrAIW84mWDyIDPW4/mPM0sHS3I+0wQUdUjkbNrqwDIpi3CLIfF4FtjWm3Oj+sGJ8T4uhI4TWHhM/mOHcLufmSy0kBPOKwu/rwhBBDqNCLNXpW8IyVoF6/1Ha0v1mBY32br/rGsVjo81Vm9URQeYDCxaycIrmEwMhwc0GD/b3WPwRIJ4Ysq4cNV0xRJD5YEYoJEiMJHfs7yqwH33D2o46Q/s7vqJ+YnSFXkpN5eGsHOAxZJS9JDA4qWlRVJUdGKCEPvxDJ5kiBvqB3zH7d2nRGpaGezpwUQdLDvsoEkEuFQhHBbbDEmwybUBsjnomDIoPLrD/i8kAEkH2Y0ptAoYP+o5VpA2Cz7AY6B9iRA7hdlYDIm2oHfDELMnxksSIc1Y2wWUZKCpIVBFB9gDCMF9gQ4sftIo0qbvUPIiSWvE1bgXrzp9RnGXOUW9T+Ab7HDShmS8IEv2T61TO1sC7rKZyhnbqS8+Zm40zzagDpd6K7INar9RMjMPb0MZ1o9IdKsR25j/QMG5csv4RZkZyBZkrJsXsW2byw0WAm+y5+c5fh3aKy+6JDeHADadGj3XqRnNG32MnTnT8Qm3s82u6eE6o7a4cck8YiCDLwKg4ZSVzuxPcdGKxu7Z91lMj+qf2HP55ZplFI2QwrQ5w2Xo4Fa0A5jqmieucOHXVGO/L1Fkz5ShxHOzf1wWfk2mDssMc+5Mpm7RCiIUsA26Uc9t95phTglD2FQPPu5SJbrsDCDNxo+hmYJdgdESQBaAPZL5wuOTYw1pJd63T/UcfWOWNHk94wme/S9WBBaaL4715P8/dDSLIcmqKCzI3R/E29QP1c8U+oXRguqKC4PWI4P2cE+RXJJRSx3ZkDhRSjzOE6qtUJcdV/0SXELGQ5UT7fvp8jiSHon5givJZos7sUVriLV+XxQ7cqcwQtfN76onJhhazhxT1QARZzhazTxFjQXU6+ydGxfUj7XFxXQ+ZY2AiA4OjhlpL+g9T98ic665zbG7FDVTYcwPeus34+UQ9EJddzu3CfYDLHk+xlTjuS2Y/RLPrRABSI3x/lihVf+isnQiyBN3O3VdMFZURN7xJ/YnOe2cOZI6dtZBSNwUOWHvbUjM+JzQQEWQZk4w6QUum56tXKCojZiEhMG4ggxN/721LWfIT7/ipm6ihgYggy8gZHXPWJ+X6Dph93KOr3ODkReeqnT5sxdQPzaOn6ufGSKPIoKYndqqtyqgaC2SnXGVNrSC5gQmspJ8tA5VhtTMVqO/nHnIrsHWEZnBKH+PNButD7tOw4OiUyqlMeaXbxz9LQJ8oFQYZm0mPuhDONLCds7D4YmuKT0128ctzgnQSgKfEYK1jRWkr/4fXRiXqj5Mmp4ejqBCdl6TAQiOhM5MrzOt7nc+Rdw6Ua0x9JDvc1+mki3+pEJ1OuOiuQzltcD3TRP0ngXOtpc7jt5E+ZA9023cLua2Gwg9xYfkV38op4kHK2WzhAKbOhi4wBDov4QKcuXidF9sEo2S2iyD7ERvh7lF4jtmf2UhNFx47fc6aqZc1jRhpl0q4mMUqvTYvE21GyxoSQfYjNhipKS6gH72/k+v02P5gl+IW4xb1wFq61JQiqLtYZWYbVNqhkRBB5lNRfATbLdscEtDMqur5YCI2Ug0FornMnlB3IHzgfFeNmZbHPdvg/b+lkRBB5hOzbDV+WFcbcltuf6/PVJ0mfuSaSnRwyXbVzrRibpsdGhERZD4qst0NYocsWhd3TMUfQwsCHDL1s+bDe7jqPc9VTzLaHI5pHYEIchh+wHkaqdfNAXNTb+esa2xhAQ82lqjnGTopt4uMn12nTU4+5exxVhoZmanJp7avlX1tqB1dn2EfbcAXC8vV9e+6EA7acf3HWNiEW5hg1o8MTdk5wnpDPKh4zzkG7oQdSg9kdpfyPL0ejqJC9OUKjCsqRLfB6EfMsRFYrgrbTSLnTAWzu/bbPc7X8TflvW8JjC+RispJxR+5pxRT/ciF8I+e9wFTwWw8ZOXHHHNc9b3QOa0AzwoVxErFZc9BH477AvfNhwxX3DejBQMFuGNOkHVoo101rRu9x9y9cv/Q+X1AhHh+cNrlPPrQZYU3kXP6o/KKeBaiEiLIOXVGnS0q44TiXw7Xf+zA/pggKyOIygvXvKGMYLaXjob6yZgjnZ/FcVHUfwXgA3+juGyLDW7v0nJIxQs5QeYs3axmFefzzipxvD0vXNNZR0q0e8bkPPbpz88mAcyx9vwdIkgHuxLcIxp3TUb8BwbOzb/gRqs2/HNE/M3iZv/AFWNxVB0oWFh/N5Cyh33Hdn9X94Mt2p7/gWnH3RiN04YrWABr0j08tvB+9bD/l/0xpPJcdDv19ZTKWdr/y7bXVpqneYZd5JQo/O/hsrOsxziGIAiCIAiCIAiCIAiCIAiCIAiCIAjCJeF/qDCVi8SMnzAAAAAASUVORK5CYII=" class="logo" alt="">
+        </a>
+        <div class="toc-split-line"></div>
+        <ul class="toc-nav-list">
+          <li><a href="zh.html">API接口</a></li>
+          <li><a href="agent_zh.html">🔥 Agent</a></li>
+          <li><a href="outcomes_zh.html">Outcomes</a></li>
+          <li class="selected"><a href="broker_zh.html">Broker接入</a></li>
+          <li><a href="trick_zh.html">最佳实践</a></li>
+          <li><a href="log_zh.html">更新日志</a></li>
+        </ul>
+        <select class="toc-nav-dropdown" onchange="javascript:changeMenuLink(options[selectedIndex].value)">
+          <option value="zh">API接口</option>
+          <option value="agent_zh">Agent</option>
+          <option value="outcomes_zh">Outcomes</option>
+          <option value="broker_zh">Broker接入</option>
+          <option value="trick_zh">最佳实践</option>
+          <option value="log_zh">更新日志</option>
+        </select>
+      </div>
+
+      <div class="switch-language">
+        <a onclick="javascript:changeHyperlink()" class="toc-link" style="display: inline-block;" href="javascript:void(0);">English</a>
+      </div>
+    </header>
+    <div class="toc-wrapper">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell" class="active">HTTP</a>
+                <a href="#" data-language-name="python">Python</a>
+          </div>
+        <ul id="toc" class="toc-list-h1">
+            <li>
+              <a href="#broker-program" class="toc-h1 toc-link active" data-title="经纪商申请 ">经纪商申请 </a>
+            </li>
+            <li>
+              <a href="#broker-guide" class="toc-h1 toc-link" data-title="经纪商指引">经纪商指引</a>
+                <ul class="toc-list-h2" style="display: none;">
+                    <li>
+                      <a href="#broker-guide-get-rebate-guide" class="toc-h2 toc-link" data-title="获取返佣指引 ">获取返佣指引 </a>
+                    </li>
+                    <li>
+                      <a href="#broker-guide-common-v5-api-for-brokers" class="toc-h2 toc-link" data-title="经纪商常用接口 ">经纪商常用接口 </a>
+                        <ul class="toc-list-h3" style="display: none;">
+                            <li>
+                              <a href="#broker-guide-common-v5-api-for-brokers-core-trading" class="toc-h3 toc-link" data-title="常规下单 ">常规下单 </a>
+                            </li>
+                            <li>
+                              <a href="#broker-guide-common-v5-api-for-brokers-algo-trading" class="toc-h3 toc-link" data-title="策略交易 ">策略交易 </a>
+                            </li>
+                            <li>
+                              <a href="#broker-guide-common-v5-api-for-brokers-grid-trading" class="toc-h3 toc-link" data-title="网格交易 ">网格交易 </a>
+                            </li>
+                            <li>
+                              <a href="#broker-guide-common-v5-api-for-brokers-recurring-buy" class="toc-h3 toc-link" data-title="定投交易 ">定投交易 </a>
+                            </li>
+                            <li>
+                              <a href="#broker-guide-common-v5-api-for-brokers-block-trading" class="toc-h3 toc-link" data-title="大宗交易 ">大宗交易 </a>
+                            </li>
+                            <li>
+                              <a href="#broker-guide-common-v5-api-for-brokers-spread-trading" class="toc-h3 toc-link" data-title="价差撮合交易 ">价差撮合交易 </a>
+                            </li>
+                            <li>
+                              <a href="#broker-guide-common-v5-api-for-brokers-convert" class="toc-h3 toc-link" data-title="闪兑 ">闪兑 </a>
+                            </li>
+                            <li>
+                              <a href="#broker-guide-common-v5-api-for-brokers-financial-product" class="toc-h3 toc-link" data-title="金融产品 ">金融产品 </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+              <a href="#dma-broker" class="toc-h1 toc-link" data-title="DMA 经纪商 ">DMA 经纪商 </a>
+                <ul class="toc-list-h2" style="display: none;">
+                    <li>
+                      <a href="#dma-broker-common-v5-api-for-brokers-get-sub-account-list" class="toc-h2 toc-link" data-title="获取子账户列表 ">获取子账户列表 </a>
+                    </li>
+                    <li>
+                      <a href="#dma-broker-common-v5-api-for-brokers-get-sub-account-fee-rates" class="toc-h2 toc-link" data-title="获取子账户交易手续费费率 ">获取子账户交易手续费费率 </a>
+                    </li>
+                    <li>
+                      <a href="#dma-broker-common-v5-api-for-brokers-create-an-api-key-for-a-sub-account" class="toc-h2 toc-link" data-title="创建子账户的APIKey ">创建子账户的APIKey </a>
+                    </li>
+                    <li>
+                      <a href="#dma-broker-common-v5-api-for-brokers-query-the-api-key-of-a-sub-account" class="toc-h2 toc-link" data-title="查询子账户的API Key ">查询子账户的API Key </a>
+                    </li>
+                    <li>
+                      <a href="#dma-broker-common-v5-api-for-brokers-get-trading-data-link-dma" class="toc-h2 toc-link" data-title="获取交易明细下载链接(DMA) ">获取交易明细下载链接(DMA) </a>
+                    </li>
+                    <li>
+                      <a href="#dma-broker-common-v5-api-for-brokers-create-trading-details-download-link-dma" class="toc-h2 toc-link" data-title="生成交易明细下载链接(DMA) ">生成交易明细下载链接(DMA) </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+              <a href="#fully-disclosed-broker-api-and-oauth" class="toc-h1 toc-link" data-title="全披露经纪商(API和OAuth)  ">全披露经纪商(API和OAuth)  </a>
+                <ul class="toc-list-h2" style="display: none;">
+                    <li>
+                      <a href="#fully-disclosed-broker-api-and-oauth-introduction" class="toc-h2 toc-link" data-title="简介 ">简介 </a>
+                    </li>
+                    <li>
+                      <a href="#fully-disclosed-broker-api-and-oauth-oauth-broker" class="toc-h2 toc-link" data-title="OAuth 经纪商 ">OAuth 经纪商 </a>
+                        <ul class="toc-list-h3" style="display: none;">
+                            <li>
+                              <a href="#fully-disclosed-broker-api-and-oauth-oauth-broker-introduction" class="toc-h3 toc-link" data-title="简介  ">简介  </a>
+                            </li>
+                            <li>
+                              <a href="#fully-disclosed-broker-api-and-oauth-oauth-broker-preparation-before-integration" class="toc-h3 toc-link" data-title="接入前的准备 ">接入前的准备 </a>
+                            </li>
+                            <li>
+                              <a href="#oauth-broker-introduction-of-authorization-mode" class="toc-h3 toc-link" data-title="授权模式介绍 ">授权模式介绍 </a>
+                            </li>
+                            <li>
+                              <a href="#fully-disclosed-broker-api-and-oauth-oauth-broker-usage-of-token" class="toc-h3 toc-link" data-title="令牌的使用 ">令牌的使用 </a>
+                            </li>
+                            <li>
+                              <a href="#fully-disclosed-broker-api-and-oauth-oauth-broker-permissions" class="toc-h3 toc-link" data-title="权限 ">权限 </a>
+                            </li>
+                            <li>
+                              <a href="#fully-disclosed-broker-api-and-oauth-oauth-broker-fast-api" class="toc-h3 toc-link" data-title="Fast API ">Fast API </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                      <a href="#fully-disclosed-broker-api-and-oauth-broker-commision-api" class="toc-h2 toc-link" data-title="经纪商返佣API ">经纪商返佣API </a>
+                        <ul class="toc-list-h3" style="display: none;">
+                            <li>
+                              <a href="#fully-disclosed-broker-api-and-oauth-broker-commision-api-get-download-link-fd" class="toc-h3 toc-link" data-title="获取返佣明细下载链接(FD) ">获取返佣明细下载链接(FD) </a>
+                            </li>
+                            <li>
+                              <a href="#fully-disclosed-broker-api-and-oauth-broker-commision-api-create-rebate-details-download-link-fd" class="toc-h3 toc-link" data-title="生成返佣明细下载链接(FD) ">生成返佣明细下载链接(FD) </a>
+                            </li>
+                            <li>
+                              <a href="#fully-disclosed-broker-api-and-oauth-broker-commision-api-get-the-user-39-s-broker-rebate-information" class="toc-h3 toc-link" data-title="获取用户的 Broker 返佣信息 ">获取用户的 Broker 返佣信息 </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                      <a href="#fully-disclosed-broker-api-and-oauth-error-code" class="toc-h2 toc-link" data-title="错误码 ">错误码 </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+        <div class="dark-box"></div>
+        <div class="content" style="padding-bottom: 500px;">
+          <h1 id="broker-program">经纪商申请 </h1>
+<p>如果您的业务平台提供数字货币服务，您就可以申请加入欧易经纪商项目，成为欧易的经纪商合作伙伴，享受专属的经纪商服务，并通过用户在欧易产生的交易手续费赚取高额返佣。<br>
+经纪商业务包含且不限：聚合交易平台、交易机器人、跟单平台、交易策略提供方、量化策略机构、资管平台等。<br></p>
+
+<ul>
+<li><a href="/cn/broker/home">点击申请</a></li>
+<li><a href="/cn/help/introduction-of-rules-on-okx-brokers">经纪商规则介绍</a></li>
+<li>如有问题请咨询线上客服</li>
+</ul>
+
+<p>具体经纪商业务文档及产品服务在申请成功后提供相关资料。</p>
+<h1 id="broker-guide">经纪商指引</h1><h2 id="broker-guide-get-rebate-guide">获取返佣指引 </h2>
+<p>OKX Broker 经纪商进行 OKX API 接口调用时，当请求参数有"tag"时，请务必录入您专属的 Broker code 信息，实现订单与经纪商的关联。<br>
+当订单录入 BrokerCode 信息后，经纪商方可享受对应的佣金奖励、数据统计等特定逻辑追踪</p>
+<h2 id="broker-guide-common-v5-api-for-brokers">经纪商常用接口 </h2>
+<p>OKX Broker经纪商进行OKX API接口调用时，当请求参数有<code>tag</code>时，请务必录入您专属的Broker code信息，实现订单与经纪商的关联。<br>
+当订单录入<code>Brokercode</code>信息后，经纪商方可享受对应的佣金奖励、数据统计等特定逻辑追踪。<br></p>
+<h3 id="broker-guide-common-v5-api-for-brokers-core-trading">常规下单 </h3>
+<p><a href="zh.html#order-book-trading">更多详情</a></p>
+
+<ul>
+<li><a href="zh.html#order-book-trading-trade-post-place-order">下单</a></li>
+<li><a href="zh.html#order-book-trading-trade-post-place-multiple-orders">批量下单</a></li>
+<li><a href="zh.html#order-book-trading-trade-post-close-positions">市价全平</a></li>
+</ul>
+<h3 id="broker-guide-common-v5-api-for-brokers-algo-trading">策略交易 </h3>
+<p><a href="zh.html#order-book-trading-algo-trading">更多详情</a></p>
+
+<ul>
+<li><a href="zh.html#order-book-trading-algo-trading-post-place-algo-order">策略委托下单</a></li>
+</ul>
+<h3 id="broker-guide-common-v5-api-for-brokers-grid-trading">网格交易 </h3>
+<p><a href="zh.html#order-book-trading-grid-trading">更多详情</a></p>
+
+<ul>
+<li><a href="zh.html#order-book-trading-grid-trading-post-place-grid-algo-order">网格策略委托下单</a></li>
+</ul>
+<h3 id="broker-guide-common-v5-api-for-brokers-recurring-buy">定投交易 </h3>
+<p><a href="zh.html#order-book-trading-recurring-buy">更多详情</a></p>
+
+<ul>
+<li><a href="zh.html#order-book-trading-recurring-buy-post-place-recurring-buy-order">定投策略委托下单</a></li>
+</ul>
+<h3 id="broker-guide-common-v5-api-for-brokers-block-trading">大宗交易 </h3>
+<p><a href="zh.html#block-trading">更多详情</a></p>
+
+<ul>
+<li><a href="zh.html#block-trading-rest-api-create-rfq">大宗交易询价</a></li>
+</ul>
+<h3 id="broker-guide-common-v5-api-for-brokers-spread-trading">价差撮合交易 </h3>
+<p><a href="zh.html#spread-trading">更多详情</a></p>
+
+<ul>
+<li><a href="zh.html#spread-trading-rest-api-place-order">价差撮合交易下单</a></li>
+</ul>
+<h3 id="broker-guide-common-v5-api-for-brokers-convert">闪兑 </h3>
+<p><a href="zh.html#funding-account">更多详情</a></p>
+
+<ul>
+<li><a href="zh.html#funding-account-rest-api-estimate-quote">闪兑询价</a></li>
+<li><a href="zh.html#funding-account-rest-api-convert-trade">闪兑交易</a></li>
+</ul>
+<h3 id="broker-guide-common-v5-api-for-brokers-financial-product">金融产品 </h3>
+<p><a href="zh.html#financial-product-earn">更多详情</a></p>
+
+<ul>
+<li><a href="zh.html#financial-product-earn-post-purchase">赚币申购</a></li>
+</ul>
+<h1 id="dma-broker">DMA 经纪商 </h1><h3 id="dma-broker-common-v5-api-for-brokers-get-sub-account-list">获取子账户列表 </h3><h4 id="10-s">限速：10次/s</h4><h4 id="user-id">限速规则：User ID</h4><h4 id="http">HTTP请求</h4>
+<p><code>GET /api/v5/broker/dma/subaccount-info</code></p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell" style="display: block;"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code>GET /api/v5/broker/dma/subaccount-info
+</code></pre></div><h4 id="1f9ac54b15">请求参数</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必须</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subAcct</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">子账户名称</td>
+</tr>
+<tr>
+<td style="text-align: left">uid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">子账户UID</td>
+</tr>
+<tr>
+<td style="text-align: left">page</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">查询页数</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">分页返回的结果集数量，最大为100，不填默认返回100条</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回结果</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"acctLv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"canTransOut"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"firstLvSubAcct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"h*******5"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"subAcctLv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"enable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"frozenFunc"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"subAcct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"h*******5"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1648521249000"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"289*********1696"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"totalPage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id="70bdef7e25">返回参数</h4>
+<table><thead>
+<tr>
+<th style="text-align: left"><strong>参数名</strong></th>
+<th style="text-align: left"><strong>类型</strong></th>
+<th style="text-align: left"><strong>描述</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">totalPage</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">总的页数</td>
+</tr>
+<tr>
+<td style="text-align: left">page</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">当前页数</td>
+</tr>
+<tr>
+<td style="text-align: left">details</td>
+<td style="text-align: left">Array</td>
+<td style="text-align: left">子账户列表</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; subAcct</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">子账户名称</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; uid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">子账户UID</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; label</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">子账户的备注</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; acctLv</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">账户模式<br><code>1</code>：现货模式<br><code>2</code>：合约模式<br><code>3</code>：跨币种保证金模式<br><code>4</code>：组合保证金模式</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; enable</td>
+<td style="text-align: left">Boolean</td>
+<td style="text-align: left">子账户状态<br><code>true</code>：正常使用<br><code>false</code>：冻结(全局)</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; frozenFunc</td>
+<td style="text-align: left">Array of strings</td>
+<td style="text-align: left">被冻结的功能<br><code>trading</code>：交易<br><code>convert</code>：闪兑<br><code>transfer</code>：母子账户间资金划转<br><code>withdrawal</code>：提币<br><code>deposit</code>：充值<br><code>flexible_loan</code>：活期借币</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; canTransOut</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是否可以主动转出（通过子账户APIKey直接转到另一个子账户下）<br><code>true</code>：可以转出<br><code>false</code>：不可转出</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; firstLvSubAcct</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">一级子账号 <br>对于 subAcctLv: 1, firstLvSubAcct 与 subAcct 相等。<br>对于 subAcctLv: 2, subAcct 属于 firstLvSubAcct。</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; subAcctLv</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">子账户层级 <br><code>1</code>: 一级子账号<br><code>2</code>: 二级子账户</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; ts</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">子账户创建时间，Unix时间戳的毫秒数格式 ，如 <code>1597026383085</code></td>
+</tr>
+</tbody></table>
+<h3 id="dma-broker-common-v5-api-for-brokers-get-sub-account-fee-rates">获取子账户交易手续费费率 </h3><h4 id="1-s">限速：1次/s</h4><h4 id="user-id">限速规则：User ID</h4><h4 id="http">HTTP请求</h4>
+<p><code>GET /api/v5/broker/dma/subaccount-trade-fee</code></p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell" style="display: block;"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code>GET /api/v5/broker/dma/subaccount-trade-fee
+</code></pre></div><h4 id="1f9ac54b15">请求参数</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必须</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subAcct</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">子账户名称</td>
+</tr>
+<tr>
+<td style="text-align: left">uid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">子账户UID</td>
+</tr>
+<tr>
+<td style="text-align: left">page</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">查询页数</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">分页返回的结果集数量，最大为100，不填默认返回100条</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回结果</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"feeRates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"marker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0008"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"taker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.001"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"marker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0005"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"taker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0007"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"marker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0002"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"taker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0005"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"marker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0002"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"taker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0005"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"marker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0002"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"taker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0005"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"marker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0002"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"taker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0005"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"marker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0002"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"taker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0005"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"marker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0002"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"taker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0005"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"marker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0002"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"taker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0003"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">],</span><span class="w">
+                    </span><span class="nl">"firstLvSubAcct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subaccount111ad"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"subAcctLv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"subAcct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subaccount111ad"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1658287703000"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"335748406955877155"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"totalPage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id="70bdef7e25">返回参数</h4>
+<table><thead>
+<tr>
+<th style="text-align: left"><strong>参数名</strong></th>
+<th style="text-align: left"><strong>类型</strong></th>
+<th style="text-align: left"><strong>描述</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">totalPage</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">总的页数</td>
+</tr>
+<tr>
+<td style="text-align: left">page</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">当前页数</td>
+</tr>
+<tr>
+<td style="text-align: left">details</td>
+<td style="text-align: left">Array</td>
+<td style="text-align: left">子账户列表</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; subAcct</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">子账户名称</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; uid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">子账户UID</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; firstLvSubAcct</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">一级子账号 <br>对于 subAcctLv: 1, firstLvSubAcct 与 subAcct 相等。<br>对于 subAcctLv: 2, subAcct 属于 firstLvSubAcct。</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; subAcctLv</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">子账户层级 <br><code>1</code>: 一级子账号<br><code>2</code>: 二级子账户</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; ts</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">子账户创建时间，Unix时间戳的毫秒数格式 ，如 <code>1597026383085</code></td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; feeRates</td>
+<td style="text-align: left">Array</td>
+<td style="text-align: left">手续费率信息</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; type</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">手续费类型<br><code>1</code>：现货 USDT 交易对<br><code>2</code>：现货 稳定币/Crypto<br><code>3</code>：USDT 交割合约<br><code>4</code>：USDC 交割合约<br><code>5</code>：币本位交割合约<br><code>6</code>：USDT 永续合约<br><code>7</code>：USDC 永续合约<br><code>8</code>：币本位永续合约<br><code>9</code>：期权</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; maker</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">挂单手续费率</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; taker</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">吃单手续费率</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+手续费率的值（如 maker/taker）：正数，代表是返佣的费率；负数，代表平台扣除的费率。
+</aside>
+<h3 id="dma-broker-common-v5-api-for-brokers-create-an-api-key-for-a-sub-account">创建子账户的APIKey </h3><h4 id="40-s">限速：40次/s</h4><h4 id="user-id">限速规则：User ID</h4><h4 id="http">HTTP请求</h4>
+<p><code>POST /api/v5/broker/dma/subaccount/apikey</code></p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell" style="display: block;"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code>POST /api/v5/broker/dma/subaccount/apikey
+body
+<span class="o">{</span>
+    <span class="s2">"subAcct"</span>:<span class="s2">"panpanBroker2"</span>,
+    <span class="s2">"label"</span>:<span class="s2">"broker3"</span>,
+    <span class="s2">"passphrase"</span>: <span class="s2">"******"</span>,
+    <span class="s2">"perm"</span>:<span class="s2">"read_only,trade"</span>,
+    <span class="s2">"ip"</span>:<span class="s2">"10.0.108.9"</span>
+<span class="o">}</span>
+</code></pre></div><h4 id="1f9ac54b15">请求参数</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必须</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subAcct</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">子账户名称，支持6-20位字母和数字组合（区分大小写，不支持空格符号）</td>
+</tr>
+<tr>
+<td style="text-align: left">label</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">API Key备注<br>不超过50位字母（区分大小写）或数字，可以是纯字母或纯数字。</td>
+</tr>
+<tr>
+<td style="text-align: left">passphrase</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">API Key密码，8-32位字母数字组合，至少包含一个数字、一个大写字母、一个小写字母、一个特殊字符</td>
+</tr>
+<tr>
+<td style="text-align: left">ip</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">绑定IP地址，多个IP用半角逗号隔开，最多支持20个IP<br><font color="red"><b>安全性考虑，推荐绑定IP</b></font> <br><font color="red"><b>未绑定IP且拥有交易或提币权限的API key，将在闲置14天之后自动删除。(模拟盘的API key不会被删除)</b></font></td>
+</tr>
+<tr>
+<td style="text-align: left">perm</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">API Key权限<br><code>read_only</code>：读取，默认拥有，且不可去除<br><code>trade</code>：交易</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回结果</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="nl">"subAcct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"panpanBroker2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"broker3"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"****"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"****"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"passphrase"</span><span class="p">:</span><span class="w"> </span><span class="s2">"******"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,trade"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0.108.9"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1597026383085"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id="70bdef7e25">返回参数</h4>
+<table><thead>
+<tr>
+<th style="text-align: left"><strong>参数名</strong></th>
+<th style="text-align: left"><strong>类型</strong></th>
+<th style="text-align: left"><strong>描述</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subAcct</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">子账户名称</td>
+</tr>
+<tr>
+<td style="text-align: left">label</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">API Key备注</td>
+</tr>
+<tr>
+<td style="text-align: left">apiKey</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">API公钥</td>
+</tr>
+<tr>
+<td style="text-align: left">secretKey</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">API Key私钥</td>
+</tr>
+<tr>
+<td style="text-align: left">passphrase</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">API Key密码</td>
+</tr>
+<tr>
+<td style="text-align: left">perm</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">API Key权限</td>
+</tr>
+<tr>
+<td style="text-align: left">ip</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">API Key绑定的ip地址</td>
+</tr>
+<tr>
+<td style="text-align: left">ts</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">创建时间，Unix时间戳的毫秒数格式，如 <code>1597026383085</code></td>
+</tr>
+</tbody></table>
+<h3 id="dma-broker-common-v5-api-for-brokers-query-the-api-key-of-a-sub-account">查询子账户的API Key </h3><h4 id="1-s">限速：1次/s</h4><h4 id="user-id">限速规则：User ID</h4><h4 id="http">HTTP请求</h4>
+<p><code>GET /api/v5/broker/dma/subaccount/apikey</code></p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell" style="display: block;"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code>GET /api/v5/broker/dma/subaccount/apikey?subAcct<span class="o">=</span>panpanBroker2
+</code></pre></div><h4 id="1f9ac54b15">请求参数</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必须</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subAcct</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">子账户名称</td>
+</tr>
+<tr>
+<td style="text-align: left">apiKey</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">API Key公钥</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回结果</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code><span class="p">{</span><span class="w">    
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"label"</span><span class="p">:</span><span class="s2">"v5"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"apiKey"</span><span class="p">:</span><span class="s2">"arg13sdfgs"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"perm"</span><span class="p">:</span><span class="s2">"read_only,trade"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ip"</span><span class="p">:</span><span class="s2">"1.1.1.1,2.2.2.2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ts"</span><span class="p">:</span><span class="s2">"1597026383085"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"label"</span><span class="p">:</span><span class="s2">"v5.1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"apiKey"</span><span class="p">:</span><span class="s2">"arg13sdfgs"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"perm"</span><span class="p">:</span><span class="s2">"read_only"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ip"</span><span class="p">:</span><span class="s2">"1.1.1.1,2.2.2.2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ts"</span><span class="p">:</span><span class="s2">"1597026383085"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id="70bdef7e25">返回参数</h4>
+<table><thead>
+<tr>
+<th style="text-align: left"><strong>参数名</strong></th>
+<th style="text-align: left"><strong>类型</strong></th>
+<th style="text-align: left"><strong>描述</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">label</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">API Key备注</td>
+</tr>
+<tr>
+<td style="text-align: left">apiKey</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">API Key公钥</td>
+</tr>
+<tr>
+<td style="text-align: left">perm</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">API Key权限<br><code>read_only</code>：读取<br><code>trade</code>：交易</td>
+</tr>
+<tr>
+<td style="text-align: left">ip</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">API Key绑定的IP地址</td>
+</tr>
+<tr>
+<td style="text-align: left">ts</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">API Key创建时间</td>
+</tr>
+</tbody></table>
+<h3 id="dma-broker-common-v5-api-for-brokers-get-trading-data-link-dma">获取交易明细下载链接(DMA) </h3>
+<p>获取已经申请成功的成交明细下载链接，下载链接生成后，仅保留9小时有效。</p>
+<h4 id="2-1min">限速：2次/1min</h4><h4 id="user-id">限速规则：User ID</h4><h4 id="http">HTTP请求</h4>
+<p><code>GET /api/v5/broker/dma/trades</code></p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell" style="display: block;"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code>GET /api/v5/broker/dma/trades?type<span class="o">=</span><span class="nb">false</span>&amp;begin<span class="o">=</span>20211109&amp;end<span class="o">=</span>20211208
+</code></pre></div><h4 id="1f9ac54b15">请求参数</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必须</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">筛选条件类型<br><code>true</code>：获取当前用户所有已生成的历史记录<br><code>false</code>：查询指定的历史记录</td>
+</tr>
+<tr>
+<td style="text-align: left">begin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">可选</td>
+<td style="text-align: left">查询链接生成的起始日期<br>格式: <code>YYYYMMdd</code>，如 <code>20210623</code>，查询在 <code>2021/06/23 00:00:00</code>（包含）后的记录<br> 如果type为<code>false</code>，该字段必填</td>
+</tr>
+<tr>
+<td style="text-align: left">end</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">可选</td>
+<td style="text-align: left">查询链接生成的结束日期<br>格式: <code>YYYYMMdd</code>，如 <code>20210623</code>，查询在 <code>2021/06/24 00:00:00</code>（不包含）前的记录<br> 如果type为<code>false</code>，该字段必填</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回结果</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"beginTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1667232000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1689823776000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1672502400000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fileHref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://okg-pri-hk.oss-cn-hongkong.aliyuncs.com/okex/broker/ndbroker_reward/*/e8e1af1918f864fe99c33fdfc9b5fcdd5819173b_20221101_20230101.zip?Expires=1697617317&amp;OSSAccessKeyId=******&amp;Signature=******"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finished"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1689823776000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id="70bdef7e25">返回参数</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">fileHref</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">文件链接，没有数据时为 ""</td>
+</tr>
+<tr>
+<td style="text-align: left">beginTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">返佣明细的开始时间，Unix时间戳的毫秒数格式 ，如 <code>1597026383085</code></td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">返佣明细的结束时间，Unix时间戳的毫秒数格式 ，如 <code>1597026383085</code></td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">生成下载链接的首次请求时间，Unix时间戳的毫秒数格式 ，如 <code>1597026383085</code></td>
+</tr>
+<tr>
+<td style="text-align: left">ts</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">下载链接生成时间，Unix时间戳的毫秒数格式 ，如 <code>1597026383085</code></td>
+</tr>
+<tr>
+<td style="text-align: left">state</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">下载链接状态<br><code>finished</code>：已生成<br><code>ongoing</code>：进行中</td>
+</tr>
+</tbody></table>
+<h4 id="csv">解压后CSV里的字段说明</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subAcct</td>
+<td style="text-align: left">子账户名称</td>
+</tr>
+<tr>
+<td style="text-align: left">subAcctLv</td>
+<td style="text-align: left">子账户等级.<br> <code>1</code>：一级子账户<br> <code>2</code>: 二级子账户</td>
+</tr>
+<tr>
+<td style="text-align: left">firstLvSubAcct</td>
+<td style="text-align: left">一级子账户名称. <br>对于 subAcctLv: 1, firstLvSubAcct 等于 subAcct.<br> 对于 subAcctLv: 2, subAcct 属于 firstLvSubAcct</td>
+</tr>
+<tr>
+<td style="text-align: left">instId</td>
+<td style="text-align: left">交易产品</td>
+</tr>
+<tr>
+<td style="text-align: left">ordId</td>
+<td style="text-align: left">订单id</td>
+</tr>
+<tr>
+<td style="text-align: left">tradeId</td>
+<td style="text-align: left">最新成交 ID</td>
+</tr>
+<tr>
+<td style="text-align: left">amt</td>
+<td style="text-align: left">成交金额，单位为<code>USDT</code></td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: left">手续费，单位为USDT</td>
+</tr>
+<tr>
+<td style="text-align: left">execType</td>
+<td style="text-align: left">流动性方向<br><code>T</code>：taker<br><code>M</code>：maker</td>
+</tr>
+<tr>
+<td style="text-align: left">ts</td>
+<td style="text-align: left">该笔订单最后一次成交时间</td>
+</tr>
+</tbody></table>
+<h3 id="dma-broker-common-v5-api-for-brokers-create-trading-details-download-link-dma">生成交易明细下载链接(DMA) </h3>
+<p>支持下载所有DMA子账户的全部交易明细</p>
+<h4 id="1-1h">限速：1次/1h</h4><h4 id="user-id">限速规则：User ID</h4><h4 id="http">HTTP请求</h4>
+<p><code>POST /api/v5/broker/dma/trades</code></p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell" style="display: block;"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code>POST /api/v5/broker/dma/trades
+body
+<span class="o">{</span>
+    <span class="s2">"begin"</span>:<span class="s2">"20210623"</span>,
+    <span class="s2">"end"</span>:<span class="s2">"20210626"</span>
+<span class="o">}</span>
+</code></pre></div><h4 id="1f9ac54b15">请求参数</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必须</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">begin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">起始日期<br>格式: <code>YYYYMMdd</code>，如 <code>20210623</code>，查询在 <code>2021/06/23 00:00:00</code>（包含）后的记录，UTC 时区。</td>
+</tr>
+<tr>
+<td style="text-align: left">end</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">结束日期<br>格式: <code>YYYYMMdd</code>，如 <code>20210623</code>，查询在 <code>2021/06/24 00:00:00</code>（不包含）前的记录，UTC 时区。</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+一次请求下载的数据时间范围begin和end的区间为180天
+</aside>
+
+<blockquote>
+<p>返回结果</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1646892328000"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id="70bdef7e25">返回参数</h4>
+<table><thead>
+<tr>
+<th style="text-align: left"><strong>参数名</strong></th>
+<th style="text-align: left"><strong>类型</strong></th>
+<th style="text-align: left"><strong>描述</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">result</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是否已经存在该区间的下载链接<br><code>true</code>：已存在，可以通过"获取返佣明细下载链接"接口获取<br><code>false</code>：不存在，正在生成，请3个小时后查看下载链接</td>
+</tr>
+<tr>
+<td style="text-align: left">ts</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">服务端首次收到请求的时间，Unix时间戳的毫秒数格式，如 <code>1597026383085</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+生成该数据需要一定的时间，请于 3 小时后查看来自"获取返佣明细下载链接(ND)"接口的文件链接；<br>
+平台需求量较多的情况下，生成数据所需要的时间会有所延长，如果超过 5 小时，请联系客服进行反馈。
+</aside>
+<h1 id="fully-disclosed-broker-api-and-oauth">全披露经纪商(API和OAuth)  </h1><h2 id="fully-disclosed-broker-api-and-oauth-introduction">简介 </h2>
+<p>全披露经纪商，按照鉴权和运作方式的不同，可以分为两种经纪商模式，即 API经纪商、OAuth经纪商。如果您是聚合交易平台、交易机器人、量化机构、资管平台等，需要 OKX 提供账户及流动性，赋能于交易用户，OKX FD Broker 是你最好的选择。<br><br></p>
+
+<p>API经纪商：<br></p>
+
+<ul>
+<li>集成欧易API，实现经纪商平台与用户的高效对接，享受独特的经纪商功能。</li>
+<li>用户在欧易申请APIKey并提供给经纪商,通过Brokercode+用户API Key下单。</li>
+</ul>
+
+<p>OAuth经纪商：<br></p>
+
+<ul>
+<li>OAuth一键授权登陆，更安全、更便捷的的经纪商&amp;用户对接方式</li>
+<li>经纪商提供用户跳转到欧易Oauth授权功能,通过Broker code+用户鉴权码下单。</li>
+<li>更多详情可参考<a href="/cn/broker/home">经纪商主页</a>。</li>
+</ul>
+
+<p>FD Broker 的优势如下 <br></p>
+
+<ul>
+<li>丰厚的佣金奖励机制
+
+<ul>
+<li>高达 50% 的佣金奖励</li>
+<li>新老用户均可返佣</li>
+<li>支持与节点返佣叠加，享受更高佣金比例</li>
+<li>支持高 VIP 返佣策略</li>
+</ul></li>
+<li>灵活的佣金管理机制</li>
+<li>更安全的用户接入方案 
+
+<ul>
+<li>FAST API，更便捷的API接入方式 </li>
+<li>第三方 IP 白名单，安全可靠的平台绑定方案</li>
+</ul></li>
+</ul>
+<h2 id="fully-disclosed-broker-api-and-oauth-oauth-broker">OAuth 经纪商 </h2><h3 id="fully-disclosed-broker-api-and-oauth-oauth-broker-introduction">简介  </h3>
+<p>OKX OAuth一键授权登陆，提供更安全、更便捷的的经纪商&amp;用户对接方式。<br>
+通过欧易OAuth 2.0用户仅需要在第三方应用内一键授权，即可进行交易。无需用户提供账户API Key或者登录密码。<br>
+欧易OAuth 2.0支持WEB和APP应用，基于OAuth 2.0协议（RFC 6749）和 OAuth 2.1草案协议中的一些新特征开发。<br>
+相关技术文档可联系商务获取。</p>
+<h3 id="fully-disclosed-broker-api-and-oauth-oauth-broker-preparation-before-integration">接入前的准备 </h3>
+<ol>
+<li>官网注册账户申请经纪商<br>
+您需要先申请成为OAuth经纪商，审核通过后您可以获取到<code>client_id</code>，<code>client_secret</code>信息。专属客户经理会提供给您相应的开发文档。<br>
+<b>接入步骤：</b><br>
+
+<ol>
+<li>经纪商申请OKX的账户</li>
+<li>经纪商进入OKX经纪商官网申请OAuth经纪商，填写申请表，红色星为必填</li>
+<li>OKX收到申请表后2天内会进行审核</li>
+<li>申请表在OKX的后台审核通过后，经纪商会收到邮件通知，邮件内容包括<code>client_id</code>和<code>client_secret</code></li>
+</ol></li>
+<li>OAuth返佣设置<br>
+当前接入的OAuth经纪商的返佣需要设置标签，下单时需要将BrokerCode标识填写到tag字段里，作为返佣订单统计的标识。</li>
+</ol>
+<h3 id="oauth-broker-introduction-of-authorization-mode">授权模式介绍 </h3>
+<p>欧易OAuth 2.0提供的授权模式：授权码模式、PKCE模式。</p>
+
+<table><thead>
+<tr>
+<th>授权模式</th>
+<th>描述</th>
+<th>使用场景</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>授权码模式</td>
+<td>用户授权，第三方应用提供<code>client_secret</code>获取授权码。通过授权码获取<code>访问令牌</code>和<code>刷新令牌</code>。</td>
+<td>应用有服务器，可存储应用密钥，与欧易OAuth服务器进行密钥交互。</td>
+</tr>
+<tr>
+<td>PKCE模式</td>
+<td>用户授权，第三方应用提供临时密钥<code>code_verifier</code>获取授权码。通过授权码获取<code>访问令牌</code>和<code>刷新令牌</code></td>
+<td>应用无服务器（或不愿意后端服务器介入授权过程），无法存储应用密钥，通过随机字符串与欧易OAuth服务器进行交互。</td>
+</tr>
+</tbody></table>
+<h4 id="oauth-broker-introduction-of-authorization-mode-authorization-code-mode">授权码模式 </h4>
+<p>同时支持App与Web应用的接入，呈现授权页面给用户，第三方应用在获取用户的授权码后，可以凭借此授权码换取访问令牌，调用OKX OpenAPI，访问用户授权的数据资源。</p>
+
+<p><img src="https://static.okx.com/cdn/assets/academy/oauth-pic/code-1.0-cn.svg" alt=""></p>
+<h4 id="oauth-broker-introduction-of-authorization-mode-pkce-mode">PKCE模式  </h4>
+<p>若第三方应用无服务端或者不希望服务端参与授权过程，无法存储第三方应用密钥（client_secret），则推荐此模式，通过应用客户端接入获取令牌，有效提升开发者应用的安全防护。</p>
+
+<p><img src="https://static.okx.com/cdn/assets/academy/oauth-pic/pkce-1.0-cn.svg" alt=""></p>
+<h3 id="fully-disclosed-broker-api-and-oauth-oauth-broker-usage-of-token">令牌的使用 </h3><h4 id="fully-disclosed-broker-api-and-oauth-oauth-broker-usage-of-token-differences-between-tokens">令牌的区别  </h4>
+<p>第三方应用通过授权码调用换取令牌接口后，会得到两种令牌。  </p>
+
+<ul>
+<li>访问令牌(access token): 用于第三方应用调用OKX OpenAPI接口。</li>
+<li>刷新令牌(refresh token): 当访问令牌失效后，用户获取新的访问令牌。</li>
+</ul>
+<h4 id="fully-disclosed-broker-api-and-oauth-oauth-broker-usage-of-token-how-to-use">如何使用  </h4>
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell" style="display: block;"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code>curl <span class="nt">-H</span> <span class="s2">"Content-Type:application/json"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Authorization:Bearer ******"</span>  <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"TERMID:32cf9c63-6737-4ab5-b1ab-8858ae659185"</span> <span class="se">\</span>
+https://openapi.okx.com/api/v5/asset/currencies
+
+</code></pre></div>
+<p>第三方应用完成授权并获取到令牌后，就可以通过访问令牌调用OKX OpenAPI接口了。
+请求时需要在请求头中携带如下信息： </p>
+
+<table><thead>
+<tr>
+<th>请求头字段</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Authorization</td>
+<td>是</td>
+<td>将<code>访问令牌</code>以Bearer的方式填写到此字段</td>
+</tr>
+<tr>
+<td>TERMID</td>
+<td>可选</td>
+<td>用于校验请求合法性的设备号信息<br>如果请求是由第三方应用客户端应用发起的（如选择了PKCE模式），则客户端应将客户端设备号在请求时带上<br>如果请求是由第三方应用服务端发起的（如选择了授权码模式），则无需填写此字段</td>
+</tr>
+</tbody></table>
+<h4 id="fully-disclosed-broker-api-and-oauth-oauth-broker-usage-of-token-token-validity">令牌的有效期 </h4>
+<ul>
+<li>访问令牌(access token)：有效期为1个小时。</li>
+<li>刷新令牌(refresh token)：有效期为3天。</li>
+</ul>
+
+<p>超过了访问令牌的有效期，接口会调用失败，如果刷新令牌还在有效期内，第三方应用需要调用刷新令牌接口，获取新的一对访问令牌和刷新令牌。新的访问令牌可以继续使用。需要注意的是，一旦刷新了令牌，无论原来的令牌有没有过期，都不再有效。<br>
+  当您撤销令牌后，原令牌将不再有效。  </p>
+<h3 id="fully-disclosed-broker-api-and-oauth-oauth-broker-permissions">权限 </h3>
+<table><thead>
+<tr>
+<th>权限</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>read_only</td>
+<td>拥有读取功能的权限（不包含子账户模块）</td>
+</tr>
+<tr>
+<td>trade</td>
+<td>拥有交易功能的权限（不包含子账户模块）</td>
+</tr>
+</tbody></table>
+<h3 id="fully-disclosed-broker-api-and-oauth-oauth-broker-fast-api">Fast API </h3>
+<p><br>
+<strong>简介</strong><br><br></p>
+
+<p>Fast API是帮助OKX用户快速授权第三方应用，创建APIKey并绑定第三方应用的功能。</p>
+
+<p><br>
+<strong>Fast API工作流程</strong><br><br></p>
+
+<p><img src="https://static.okx.com/cdn/assets/academy/oauth-pic/fast_api_zh.png" alt=""></p>
+
+<p>API Broker的界面上Broker用户登录之后，可以通过Oauth授权跳转到登录OKX页面，在OKX页面登录授权以后，OKX会授权该API Broker 拥有为其用户创建拥有<code>读取</code>和<code>交易</code>权限的API Key。</p>
+
+<p><br>
+<strong>申请流程</strong><br></p>
+
+<ol>
+<li>在OKX申请API和OAuth经纪商
+
+<ul>
+<li>建议申请第三方APP IP白名单<br></li>
+</ul></li>
+<li>在OauthBroker应用程序中，提供<br>
+
+<ul>
+<li>第三方服务器IP白名单</li>
+<li>重定向URL</li>
+<li>Logo</li>
+<li>Fast API权限</li>
+<li>跨域域名</li>
+</ul></li>
+<li>申请成功后，您会收到一封电子邮件，包含client_id和client_secret。请务必妥善保存此信息，不要对他人展示。</li>
+</ol>
+<h2 id="fully-disclosed-broker-api-and-oauth-broker-commision-api">经纪商返佣API </h2>
+<ul>
+<li>可以通过<a href="zh.html#affiliate">节点接口</a>判断用户是否是自己的节点邀请用户</li>
+<li>可以通过<a href="broker_zh.html#fully-disclosed-broker-api-and-oauth-broker-commision-api-get-the-user-39-s-broker-rebate-information">获取用户的 Broker 返佣信息</a>接口判断用户是否可以给 Broker 返佣</li>
+<li>返佣数据下载
+
+<ul>
+<li>先通过<a href="broker_zh.html#fully-disclosed-broker-api-and-oauth-broker-commision-api-create-rebate-details-download-link-fd">生成返佣明细下载链接(FD)</a>接口生成数据</li>
+<li>再通过<a href="broker_zh.html#fully-disclosed-broker-api-and-oauth-broker-commision-api-get-download-link-fd">获取返佣明细下载链接(FD)</a>接口下载数据</li>
+</ul></li>
+</ul>
+<h3 id="fully-disclosed-broker-api-and-oauth-broker-commision-api-get-download-link-fd">获取返佣明细下载链接(FD) </h3>
+<p>获取已经申请成功的返佣明细下载链接，每次请求时获取新的链接，且2小时内有效。</p>
+<h4 id="2-1min">限速：2次/1min</h4><h4 id="user-id">限速规则：User ID</h4><h4 id="http">HTTP请求</h4>
+<p><code>GET /api/v5/broker/fd/rebate-per-orders</code></p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell" style="display: block;"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code>GET /api/v5/broker/fd/rebate-per-orders?type<span class="o">=</span><span class="nb">false</span>&amp;begin<span class="o">=</span>20221207&amp;end<span class="o">=</span>20230207
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python" style="display: none;"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code><span class="kn">import</span> <span class="nn">okx.FDBroker</span> <span class="k">as</span> <span class="n">FDbroker</span>
+
+<span class="c1"># API 初始化
+</span><span class="n">apikey</span> <span class="o">=</span> <span class="s">"YOUR_API_KEY"</span>
+<span class="n">secretkey</span> <span class="o">=</span> <span class="s">"YOUR_SECRET_KEY"</span>
+<span class="n">passphrase</span> <span class="o">=</span> <span class="s">"YOUR_PASSPHRASE"</span>
+<span class="n">flag</span> <span class="o">=</span> <span class="s">"0"</span>  <span class="c1"># 实盘:0 , 模拟盘：1
+</span>
+<span class="n">fdBrokerAPI</span> <span class="o">=</span> <span class="n">FDbroker</span><span class="p">.</span><span class="n">FDBrokerAPI</span><span class="p">(</span><span class="n">apikey</span><span class="p">,</span> <span class="n">secretkey</span><span class="p">,</span> <span class="n">passphrase</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="n">flag</span><span class="p">)</span>
+
+<span class="c1"># 获取返佣明细下载链接
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">fdBrokerAPI</span><span class="p">.</span><span class="n">get_rebate_details_download_link</span><span class="p">(</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s">"true"</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div><h4 id="1f9ac54b15">请求参数</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必须</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">筛选条件类型<br><code>true</code>：获取当前用户所有已生成的历史记录<br><code>false</code>：查询指定的历史记录</td>
+</tr>
+<tr>
+<td style="text-align: left">begin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">可选</td>
+<td style="text-align: left">查询链接生成的起始日期<br>格式: <code>YYYYMMdd</code>，如 <code>20210623</code>，查询在 <code>2021/06/23 00:00:00</code>（包含）后的记录<br>如果type为<code>false</code>，该字段必填</td>
+</tr>
+<tr>
+<td style="text-align: left">end</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">可选</td>
+<td style="text-align: left">查询链接生成的结束日期<br>格式: <code>YYYYMMdd</code>，如 <code>20210623</code>，查询在 <code>2021/06/24 00:00:00</code>（不包含）前的记录<br>如果type为<code>false</code>，该字段必填</td>
+</tr>
+<tr>
+<td style="text-align: left">brokerType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">可选</td>
+<td style="text-align: left">经纪商类型<br><code>api</code>：API经纪商<br><code>oauth</code>：Oauth经纪商<br>当经纪商只有一种类型时，该参数可以不填<br>当经纪商有多种类型时，该参数必填</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回结果</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"beginTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1671638400000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1671675432000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1671638400000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fileHref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://okg-pri-hk.oss-cn-hongkong.aliyuncs.com/okex/broker/pap/brokerRebateInfo/******/******/2022-12-22/RebateDetails/RebateDetails1222-1222.csv?Expires=1697617451&amp;OSSAccessKeyId=******&amp;Signature=******"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finished"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1671676696000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id="70bdef7e25">返回参数</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">fileHref</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">文件链接</td>
+</tr>
+<tr>
+<td style="text-align: left">beginTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">返佣明细的开始时间，Unix时间戳的毫秒数格式 ，如 <code>1597026383085</code></td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">返佣明细的结束时间，Unix时间戳的毫秒数格式 ，如 <code>1597026383085</code></td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">生成下载链接的首次请求时间，Unix时间戳的毫秒数格式 ，如 <code>1597026383085</code></td>
+</tr>
+<tr>
+<td style="text-align: left">ts</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">下载链接生成时间，Unix时间戳的毫秒数格式 ，如 <code>1597026383085</code></td>
+</tr>
+<tr>
+<td style="text-align: left">state</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">下载链接状态<br><code>finished</code>：已生成<br><code>ongoing</code>：生成中</td>
+</tr>
+</tbody></table>
+<h4 id="csv">解压后CSV里的字段说明</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">brokerCode</td>
+<td style="text-align: left">申请到的BrokerCode标识</td>
+</tr>
+<tr>
+<td style="text-align: left">level</td>
+<td style="text-align: left">用户等级，如Lv1, VIP1, VIP2</td>
+</tr>
+<tr>
+<td style="text-align: left">uid</td>
+<td style="text-align: left">账户 UID</td>
+</tr>
+<tr>
+<td style="text-align: left">instId</td>
+<td style="text-align: left">产品ID</td>
+</tr>
+<tr>
+<td style="text-align: left">ordId</td>
+<td style="text-align: left">订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">clOrdId</td>
+<td style="text-align: left">客户自定义订单ID。如果下单时未提供，则返回空字符串</td>
+</tr>
+<tr>
+<td style="text-align: left">spotTradeAmt</td>
+<td style="text-align: left">现货交易量，单位为<code>USDT</code></td>
+</tr>
+<tr>
+<td style="text-align: left">derivativeTradeAmt</td>
+<td style="text-align: left">衍生品交易量，单位为<code>USDT</code></td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: left">手续费，单位为<code>USDT</code></td>
+</tr>
+<tr>
+<td style="text-align: left">netFee</td>
+<td style="text-align: left">净手续费 (去除返佣卡、对手方等数据后进行返佣结算的手续费基数)，单位为<code>USDT</code></td>
+</tr>
+<tr>
+<td style="text-align: left">settlementFee</td>
+<td style="text-align: left">结算手续费 (去除节点返佣、返佣卡等，Broker进行结算前的手续费基数)，单位为<code>USDT</code></td>
+</tr>
+<tr>
+<td style="text-align: left">brokerRebate</td>
+<td style="text-align: left">经纪商返佣量，单位为<code>USDT</code></td>
+</tr>
+<tr>
+<td style="text-align: left">suBrokerRebate</td>
+<td style="text-align: left">经纪商助力人返佣量，单位为<code>USDT</code></td>
+</tr>
+<tr>
+<td style="text-align: left">userRebate</td>
+<td style="text-align: left">用户返佣量，单位为<code>USDT</code></td>
+</tr>
+<tr>
+<td style="text-align: left">affiliated</td>
+<td style="text-align: left">是否有节点返佣<br><code>true</code>：节点返佣<br><code>false</code>：无节点返佣</td>
+</tr>
+<tr>
+<td style="text-align: left">ts</td>
+<td style="text-align: left">该笔订单当天最后一次成交时间<br>Unix 时间戳为毫秒数格式，如 <code>1597026383085</code></td>
+</tr>
+</tbody></table>
+<h3 id="fully-disclosed-broker-api-and-oauth-broker-commision-api-create-rebate-details-download-link-fd">生成返佣明细下载链接(FD) </h3>
+<p>支持FD Broker的所有历史返佣明细。</p>
+<h4 id="1-1h">限速：1次/1h</h4><h4 id="user-id">限速规则：User ID</h4><h4 id="http">HTTP请求</h4>
+<p><code>POST /api/v5/broker/fd/rebate-per-orders</code></p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell" style="display: block;"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code>POST /api/v5/broker/fd/rebate-per-orders
+body
+<span class="o">{</span>
+    <span class="s2">"begin"</span>:<span class="s2">"20210623"</span>,
+    <span class="s2">"end"</span>:<span class="s2">"20210626"</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python" style="display: none;"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code><span class="kn">import</span> <span class="nn">okx.FDBroker</span> <span class="k">as</span> <span class="n">FDbroker</span>
+
+<span class="c1"># API 初始化
+</span><span class="n">apikey</span> <span class="o">=</span> <span class="s">"YOUR_API_KEY"</span>
+<span class="n">secretkey</span> <span class="o">=</span> <span class="s">"YOUR_SECRET_KEY"</span>
+<span class="n">passphrase</span> <span class="o">=</span> <span class="s">"YOUR_PASSPHRASE"</span>
+<span class="n">flag</span> <span class="o">=</span> <span class="s">"0"</span>  <span class="c1"># 实盘:0 , 模拟盘：1
+</span>
+<span class="n">fdBrokerAPI</span> <span class="o">=</span> <span class="n">FDbroker</span><span class="p">.</span><span class="n">FDBrokerAPI</span><span class="p">(</span><span class="n">apikey</span><span class="p">,</span> <span class="n">secretkey</span><span class="p">,</span> <span class="n">passphrase</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="n">flag</span><span class="p">)</span>
+
+<span class="c1"># 生成返佣明细下载链接
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">fdBrokerAPI</span><span class="p">.</span><span class="n">generate_rebate_details_download_link</span><span class="p">(</span>
+    <span class="n">begin</span><span class="o">=</span><span class="s">"20210623"</span><span class="p">,</span>
+    <span class="n">end</span><span class="o">=</span><span class="s">"20210626"</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div><h4 id="1f9ac54b15">请求参数</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必须</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">begin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">起始日期<br>格式: <code>YYYYMMdd</code>，如 <code>20210623</code>，查询在 <code>2021/06/23 00:00:00</code>（包含）后的记录</td>
+</tr>
+<tr>
+<td style="text-align: left">end</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">结束日期<br>格式: <code>YYYYMMdd</code>，如 <code>20210623</code>，查询在 <code>2021/06/24 00:00:00</code>（不包含）前的记录</td>
+</tr>
+<tr>
+<td style="text-align: left">brokerType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">可选</td>
+<td style="text-align: left">经纪商类型<br><code>api</code>：API经纪商<br><code>oauth</code>：Oauth经纪商<br>当经纪商只有一种类型时，该参数可以不填<br>当经纪商有多种类型时，该参数必填</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+一次请求下载的数据时间范围begin和end的区间为180天
+</aside>
+
+<blockquote>
+<p>返回结果</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1646892328000"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id="70bdef7e25">返回参数</h4>
+<table><thead>
+<tr>
+<th style="text-align: left"><strong>参数名</strong></th>
+<th style="text-align: left"><strong>类型</strong></th>
+<th style="text-align: left"><strong>描述</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">result</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是否已经存在该区间的下载链接<br><code>true</code>：已存在，可以通过"获取返佣明细下载链接"接口获取<br><code>false</code>：不存在，正在生成，请2个小时后查看下载链接</td>
+</tr>
+<tr>
+<td style="text-align: left">ts</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">服务端首次收到请求的时间，Unix时间戳的毫秒数格式，如 <code>1597026383085</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+生成该数据需要一定的时间，请于 2 小时后查看来自"获取返佣明细下载链接(FD)"接口的文件链接；<br>
+平台需求量较多的情况下，生成数据所需要的时间会有所延长，如果超过 3 小时，请联系客服进行反馈。
+</aside>
+<h3 id="fully-disclosed-broker-api-and-oauth-broker-commision-api-get-the-user-39-s-broker-rebate-information">获取用户的 Broker 返佣信息 </h3>
+<p>FD broker 查询用户是否有返佣条件，满足Broker返佣条件、下单时指定了 brokerCode、且用户的交易产生手续费时，Broker 会获得返佣。</p>
+<h4 id="5-2s">限速：5次/2s</h4><h4 id="user-id">限速规则：User ID</h4><h4 id="http">HTTP请求</h4>
+<p><code>GET /api/v5/broker/fd/if-rebate</code></p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell" style="display: block;"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code>GET /api/v5/broker/fd/if-rebate?apiKey<span class="o">=</span>63d54aa0-0020-4ad9-a9f0-ac92654bc831
+</code></pre></div><h4 id="1f9ac54b15">请求参数</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必须</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">apiKey</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">用户的 API key</td>
+</tr>
+<tr>
+<td style="text-align: left">brokerType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">可选</td>
+<td style="text-align: left">经纪商类型<br><code>api</code>：API经纪商<br><code>oauth</code>：Oauth经纪商<br>当经纪商只有一种类型时，该参数可以不填<br>当经纪商有多种类型时，该参数必填</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回结果</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"affiliated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"brokerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6099c63a8d75SCDE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"clientRebateRatio"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastRebate"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id="70bdef7e25">返回参数</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">账户无法Broker返佣的原因<br><code>0</code>：可以返佣<br><code>1</code>：Broker身份过期<br><code>2</code>：手续费等级为<code>VIP5/6</code>且月返佣金额达到上限<br><code>3</code>：手续费等级大于等于<code>VIP7</code><br><code>4</code>：MSA 账户无法获得 Broker 返佣</td>
+</tr>
+<tr>
+<td style="text-align: left">brokerCode</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">FD broker 申请到的 BrokerCode 标识</td>
+</tr>
+<tr>
+<td style="text-align: left">affiliated</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">绑定关系的情况，有无节点返佣<br><code>true</code>：有节点返佣<br><code>false</code>：无节点返佣</td>
+</tr>
+<tr>
+<td style="text-align: left">clientRebateRatio</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">交易用户可获取返佣比例</td>
+</tr>
+<tr>
+<td style="text-align: left">lastRebate</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">账号月返佣金额，仅适用于 VIP5 和 VIP6 的用户</td>
+</tr>
+</tbody></table>
+<h2 id="fully-disclosed-broker-api-and-oauth-error-code">错误码 </h2>
+<table><thead>
+<tr>
+<th>错误提示</th>
+<th>HTTP 状态码</th>
+<th>错误码</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>53000</td>
+<td>400</td>
+<td>无效的token</td>
+</tr>
+<tr>
+<td>53001</td>
+<td>400</td>
+<td>无效的授权，用户已取消授权</td>
+</tr>
+<tr>
+<td>53002</td>
+<td>400</td>
+<td>token已过期</td>
+</tr>
+<tr>
+<td>53003</td>
+<td>400</td>
+<td>token已撤销</td>
+</tr>
+<tr>
+<td>53004</td>
+<td>400</td>
+<td>用户已被冻结</td>
+</tr>
+<tr>
+<td>53005</td>
+<td>400</td>
+<td>刷新令牌不正确</td>
+</tr>
+<tr>
+<td>53006</td>
+<td>401</td>
+<td>无效的设备</td>
+</tr>
+<tr>
+<td>53009</td>
+<td>400</td>
+<td>授权失败</td>
+</tr>
+<tr>
+<td>53010</td>
+<td>400</td>
+<td>参数{0}错误</td>
+</tr>
+<tr>
+<td>53011</td>
+<td>400</td>
+<td>必填参数{0}不能为空</td>
+</tr>
+<tr>
+<td>53012</td>
+<td>400</td>
+<td>授权码已过期，请确保在有效时间内，并且使用的是正确的域名。</td>
+</tr>
+<tr>
+<td>53013</td>
+<td>400</td>
+<td>接口权限不足</td>
+</tr>
+<tr>
+<td>53014</td>
+<td>401</td>
+<td>无效的IP</td>
+</tr>
+<tr>
+<td>53015</td>
+<td>400</td>
+<td>参数{参数名}长度超过最大限制{长度}</td>
+</tr>
+<tr>
+<td>53016</td>
+<td>400</td>
+<td>无效的redirect_uri</td>
+</tr>
+<tr>
+<td>53017</td>
+<td>400</td>
+<td>快捷 API 权限尚未开启</td>
+</tr>
+</tbody></table>
+
+        </div>
+        <div class="dark-box">
+            <div class="lang-selector" style="width: 320px;">
+                  <a href="#" data-language-name="shell" class="active">HTTP</a>
+                  <a href="#" data-language-name="python">Python</a>
+            </div>
+        </div>
+    </div>
+  
+
+</body></html>

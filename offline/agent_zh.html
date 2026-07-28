@@ -1,0 +1,1258 @@
+<!DOCTYPE html><html><head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>简介  – 欧易 API接入指南 | 欧易技术对接 | 欧易</title>
+    <meta name="description" content="欢迎来到欧易API接入指南,欧易技术对接。欧易是全球领先的比特币交易平台，使用银行级别的SSL加密和冷存储等技术，为用户提供安全稳定的数字资产服务。">
+    <meta name="keywords" content="欧易API接入指南,欧易技术对接">
+
+    <link rel="shortcut icon" href="https://static.coinall.ltd/cdn/assets/imgs/221/A73079733B3789DA.png" type="image/png">
+
+
+
+
+
+      <link rel="canonical" href="https://www.okx.com/docs-v5/agent_zh/">
+      <link rel="alternate" href="https://www.okx.com/docs-v5/agent_zh/" hreflang="zh-Hans">
+      <link rel="alternate" href="https://www.okx.com/docs-v5/agent_en/" hreflang="en">
+      <link rel="alternate" href="https://www.okx.com/docs-v5/agent_en/" hreflang="x-default">
+
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <style>/*! normalize.css v3.0.2 | MIT License | git.io/normalize */html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:0.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-webkit-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code{font-family:sans-serif}kbd,pre,samp{font-family:monospace, monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{-webkit-box-sizing:border-box;box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}.content h1,.content h2,.content h3,.content h4,.content h5,.content h6,html,body{font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";font-size:14px}.content h1,.content h2,.content h3,.content h4,.content h5,.content h6{font-weight:bold}.content code,.content pre{font-family:Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;font-size:12px;line-height:1.5}.content code{word-break:break-all;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto}header{display:flex;justify-content:space-between;align-items:center;height:48px;background:#171f30;position:fixed;width:100%;z-index:100;padding:0 24px;-webkit-box-sizing:border-box;box-sizing:border-box;border-bottom:2px solid black}header .logo{height:36px;vertical-align:middle}body .content{overflow-x:hidden}body header .toc-link{color:#2676ff;width:80px;line-height:26px;border:1px solid #2676ff;border-radius:4px;-webkit-box-sizing:border-box;box-sizing:border-box;text-align:center;vertical-align:middle}body header .switch-language{width:80px}body .toc-left{display:flex;height:100%;align-items:center}body .toc-split-line{background:#31394a;width:1px;height:40%;margin:10px 32px 10px 24px}body .toc-nav-list{font-weight:500;font-size:14px;padding:0;margin:0}body .toc-nav-list li{margin-right:32px;border-bottom:2px solid transparent;height:43px;line-height:43px;display:inline-block;cursor:pointer}body .toc-nav-list li a{color:#646f84;text-decoration:none;display:block;height:100%}body .toc-nav-list li:last-child{margin-right:0}body .toc-nav-list li.selected{border-bottom-color:#ced1d9}body .toc-nav-list li.selected a{color:#ced1d9}body .toc-nav-dropdown{display:none;outline:none;color:#fff;border-radius:4px;padding:4px 8px;border:thin solid #555e71;background:#181e2a;-webkit-box-shadow:0 0 0 0 transparent;box-shadow:0 0 0 0 transparent}@media screen and (max-width: 768px){body .toc-nav-list{display:none}body .toc-nav-dropdown{display:block}}body .toc-wrapper{background-color:#181e2a;top:48px}body .toc-wrapper>.search input{background-color:#181e2a;border-color:#31394a}body .toc-wrapper>.search-results{background-color:#101621;color:#3f475a}body .toc-link,body .toc-footer li{color:#dde1eb}body .toc-wrapper li{line-height:40px}body .toc-wrapper .toc-link.active{background-color:#31394a}body .toc-wrapper .toc-h1{font-size:14px;font-weight:500}body .toc-wrapper .toc-h2{font-size:14px}body .toc-wrapper .toc-list-h2,body .toc-wrapper .toc-list-h3{background-color:unset}body .toc-wrapper .toc-link.active-parent{background-color:unset}body .content>h1[id],body .content>h2[id],body .content>h3[id]{margin-top:0;padding-top:calc(48px + 1em);z-index:1}body .content>h1,body .content>h2,body .content>h3,body .content>h4{padding:0 28px 8px}body .content h1{margin-left:28px;margin-right:calc(40% + 28px);border-top-color:transparent;border-bottom-color:#d8dce5;background-color:transparent;padding-top:1.2em;padding-left:0}body .content h2,body .content h3{border-top-color:transparent;border-bottom-color:transparent;background-color:transparent;padding-top:1.2em}body .content h2{margin-bottom:8px}body .content h4{font-size:14px}body .content p{color:#3f475a;margin-bottom:0}body .content table th{border-bottom:1px solid #d8dce5}body .content table tr:last-child{border-bottom:1px solid #d8dce5}body .content table td{border:1px solid #d8dce5;vertical-align:middle}body .content table td:first-child{padding:10px;white-space:nowrap}body .content code{background-color:rgba(31,41,51,0.08)}body .content aside{padding:10px 12px;margin-right:calc(40% + 28px);margin-left:28px;border-radius:4px}body .content aside.warning{color:#e35e5e;background-color:#ffe7e7}body .content aside.notice{color:#205fec;background-color:#e4ecff}body .page-wrapper .dark-box{top:48px;background-color:#181e2a}body .page-wrapper .lang-selector{background-color:#101621;border-bottom:5px solid #181e2a}body .lang-selector a.active{background-color:#181e2a}body .content blockquote>p,body .content pre,body .content blockquote{background-color:#101621}body .highlight,body .highlight .w{background-color:unset}body.is-agent .page-wrapper .dark-box{display:none}body.is-agent .page-wrapper{background-color:#0d1117}body.is-agent header{background:#0d1117;border-bottom:1px solid #21262d}body.is-agent .toc-split-line{background:#21262d}body.is-agent .toc-wrapper{background-color:#0d1117;border-right:1px solid #21262d}body.is-agent .toc-wrapper>.search input{background-color:#161b22;border-color:#21262d;color:#e6edf3}body.is-agent .toc-link,body.is-agent .toc-footer li{color:#8b949e}body.is-agent .toc-wrapper .toc-link:hover{color:#e6edf3}body.is-agent .toc-wrapper .toc-link.active{background-color:#161b22;color:#e6edf3}body.is-agent .toc-wrapper .toc-link.active-parent{background-color:transparent;color:#c9d1d9}body.is-agent .content>h1,body.is-agent .content>h2,body.is-agent .content>h3,body.is-agent .content>h4,body.is-agent .content>h5,body.is-agent .content>h6,body.is-agent .content>p,body.is-agent .content>table,body.is-agent .content>ul,body.is-agent .content>ol,body.is-agent .content>aside,body.is-agent .content>dl{margin-right:0;color:#c9d1d9}body.is-agent .content h1{margin-right:0;color:#ffffff;background-color:transparent;background-image:none;border-top-color:transparent;border-bottom-color:#21262d}body.is-agent .content h2,body.is-agent .content h3{color:#ffffff;background-color:transparent;background-image:none;border-top-color:transparent}body.is-agent .content h4{color:#e6edf3}body.is-agent .content p{color:#c9d1d9}body.is-agent .content ul,body.is-agent .content ol{color:#c9d1d9}body.is-agent .content strong{color:#ffffff}body.is-agent .content a{color:#58a6ff}body.is-agent .content a:hover{color:#79b8ff}body.is-agent .content code{background-color:rgba(110,118,129,0.2);color:#e6edf3}body.is-agent .content pre,body.is-agent .content blockquote{float:none;width:auto;clear:both;margin-left:0;margin-right:0;margin-top:1em;margin-bottom:1em;-webkit-box-sizing:border-box;box-sizing:border-box;background-color:#161b22;border:1px solid #21262d;border-radius:6px;scrollbar-width:thin;scrollbar-color:#30363d #161b22}body.is-agent .content pre::-webkit-scrollbar,body.is-agent .content blockquote::-webkit-scrollbar{height:6px;width:6px}body.is-agent .content pre::-webkit-scrollbar-track,body.is-agent .content blockquote::-webkit-scrollbar-track{background:#161b22;border-radius:0 0 6px 6px}body.is-agent .content pre::-webkit-scrollbar-thumb,body.is-agent .content blockquote::-webkit-scrollbar-thumb{background-color:#30363d;border-radius:3px}body.is-agent .content pre::-webkit-scrollbar-thumb:hover,body.is-agent .content blockquote::-webkit-scrollbar-thumb:hover{background-color:#484f58}body.is-agent .content table th{background-color:#161b22;color:#ffffff;border-color:#21262d}body.is-agent .content table td{color:#c9d1d9;border-color:#21262d;background-color:transparent}body.is-agent .content table tr:nth-child(even) td,body.is-agent .content table tr:nth-child(odd) td{background-color:rgba(255,255,255,0.03)}body.is-agent .content table tr:last-child{border-bottom-color:#21262d}body.is-agent .content aside{margin-right:0}@media (max-width: 930px){body .content h1{margin-right:28px}body .content aside{margin-right:28px}body #nav-button{top:48px}body .toc-link{padding-top:unset;padding-bottom:unset}}html,body{color:#3F475A;padding:0;margin:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background-color:#F3F7F9;height:100%;-webkit-text-size-adjust:none}#toc>ul>li>a>span{float:right;background-color:#2484ff;border-radius:40px;width:20px}.toc-wrapper{-webkit-transition:left 0.3s ease-in-out;transition:left 0.3s ease-in-out;overflow-y:auto;overflow-x:hidden;position:fixed;z-index:30;top:0;left:0;bottom:0;width:230px;background-color:#2E3336;font-size:13px;font-weight:bold}.toc-wrapper .lang-selector{display:none}.toc-wrapper .lang-selector a{padding-top:0.5em;padding-bottom:0.5em}.toc-wrapper .logo{display:block;max-width:100%;margin-bottom:0px}.toc-wrapper>.search{position:relative}.toc-wrapper>.search input{background:#2E3336;border-width:0 0 1px 0;border-color:#666;padding:6px 0 6px 20px;-webkit-box-sizing:border-box;box-sizing:border-box;margin:10px 15px;width:200px;outline:none;color:#fff;border-radius:0}.toc-wrapper>.search:before{position:absolute;top:17px;left:15px;color:#fff}.toc-wrapper .search-results{margin-top:0;-webkit-box-sizing:border-box;box-sizing:border-box;height:0;overflow-y:auto;overflow-x:hidden;-webkit-transition-property:height, margin;transition-property:height, margin;-webkit-transition-duration:180ms;transition-duration:180ms;-webkit-transition-timing-function:ease-in-out;transition-timing-function:ease-in-out;background:#1E2224}.toc-wrapper .search-results.visible{height:30%;margin-bottom:1em}.toc-wrapper .search-results li{margin:1em 15px;line-height:1}.toc-wrapper .search-results a{color:#fff;text-decoration:none}.toc-wrapper .search-results a:hover{text-decoration:underline}.toc-wrapper ul,.toc-wrapper li{list-style:none;margin:0;padding:0;line-height:28px}.toc-wrapper li{color:#fff;-webkit-transition-property:background;transition-property:background;-webkit-transition-timing-function:linear;transition-timing-function:linear;-webkit-transition-duration:200ms;transition-duration:200ms}.toc-wrapper .toc-link.active{background-color:#0F75D4;color:#fff}.toc-wrapper .toc-link.active-parent{background-color:#1E2224;color:#fff}.toc-wrapper .toc-list-h2{display:none;background-color:#1E2224;font-weight:500}.toc-wrapper .toc-h2{padding-left:25px;font-size:12px}.toc-wrapper .toc-list-h3{display:none;background-color:#1E2224}.toc-wrapper .toc-h3{padding-left:40px;font-size:12px}.toc-wrapper .toc-footer{padding:1em 0;margin-top:1em;border-top:1px dashed #666}.toc-wrapper .toc-footer li,.toc-wrapper .toc-footer a{color:#fff;text-decoration:none}.toc-wrapper .toc-footer a:hover{text-decoration:underline}.toc-wrapper .toc-footer li{font-size:0.8em;line-height:1.7;text-decoration:none}.toc-link,.toc-footer li{padding:0 15px 0 15px;display:block;overflow-x:hidden;white-space:nowrap;text-overflow:ellipsis;text-decoration:none;color:#fff;-webkit-transition-property:background;transition-property:background;-webkit-transition-timing-function:linear;transition-timing-function:linear;-webkit-transition-duration:130ms;transition-duration:130ms}#nav-button{padding:0 1.5em 5em 0;display:none;position:fixed;top:0;left:0;z-index:100;color:#000;text-decoration:none;font-weight:bold;opacity:0.7;line-height:16px;-webkit-transition:left 0.3s ease-in-out;transition:left 0.3s ease-in-out}#nav-button span{display:block;padding:6px 6px 6px;background-color:rgba(243,247,249,0.7);-webkit-transform-origin:0 0;transform-origin:0 0;-webkit-transform:rotate(-90deg) translate(-100%, 0);transform:rotate(-90deg) translate(-100%, 0);border-radius:0 0 0 5px}#nav-button img{height:16px;vertical-align:bottom}#nav-button:hover{opacity:1}#nav-button.open{left:230px}.page-wrapper{margin-left:230px;position:relative;z-index:10;background-color:#F3F7F9;min-height:100%;padding-bottom:1px}.page-wrapper .dark-box{width:40%;background-color:#2E3336;position:absolute;right:0;top:0;bottom:0}.page-wrapper .lang-selector{position:fixed;z-index:50;border-bottom:5px solid #2E3336}.lang-selector{display:flex;background-color:#1E2224;width:100%;font-weight:bold;overflow-x:auto}.lang-selector a{display:inline;color:#fff;text-decoration:none;padding:0 10px;line-height:30px;outline:0}.lang-selector a:active,.lang-selector a:focus{background-color:#111;color:#fff}.lang-selector a.active{background-color:#2E3336;color:#fff}.lang-selector:after{content:"";clear:both;display:block}.content{-webkit-transform:translateZ(0);position:relative;z-index:30}.content:after{content:"";display:block;clear:both}.content>h1,.content>h2,.content>h3,.content>h4,.content>h5,.content>h6,.content>p,.content>table,.content>ul,.content>ol,.content>aside,.content>dl{margin-right:40%;padding:0 28px;-webkit-box-sizing:border-box;box-sizing:border-box;display:block}.content>ul,.content>ol{padding-left:43px}.content>h1,.content>h2,.content>h3,.content>div{clear:both}.content h1{font-size:24px;color:#1F2533;padding-top:0.5em;padding-bottom:0.5em;margin-bottom:21px;margin-top:2em;border-top:1px solid #ccc;border-bottom:1px solid #ccc;background-color:#fdfdfd}.content h1:first-child,.content div:first-child+h1{border-top-width:0;margin-top:0}.content h2{font-size:18px;color:#1F2533;margin-top:4em;margin-bottom:0;border-top:1px solid #ccc;padding-top:1.2em;padding-bottom:1.2em;background-image:-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.2)), to(rgba(255,255,255,0)));background-image:linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0))}.content h3{font-size:16px;color:#3F475A;margin-top:0.5em;margin-bottom:0;padding-top:1.2em;padding-bottom:1.2em;background-image:-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.2)), to(rgba(255,255,255,0)));background-image:linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0))}.content h1+h2,.content h1+div+h2{margin-top:-21px;border-top:none}.content h4,.content h5,.content h6{font-size:15px;margin-top:2.5em;margin-bottom:0.8em}.content h4,.content h5,.content h6{font-size:10px}.content hr{margin:2em 0;border-top:2px solid #2E3336;border-bottom:2px solid #F3F7F9}.content table{margin-bottom:1em;overflow:auto}.content table th,.content table td{text-align:left;vertical-align:top;line-height:1.6}.content table th code,.content table td code{white-space:nowrap}.content table th{padding:5px 10px;border-bottom:1px solid #ccc;vertical-align:bottom}.content table td{padding:10px}.content table tr:last-child{border-bottom:1px solid #ccc}.content table tr:nth-child(odd)>td{background-color:white}.content table tr:nth-child(even)>td{background-color:#fbfcfd}.content dt{font-weight:bold}.content dd{margin-left:15px}.content p,.content li,.content dt,.content dd{line-height:1.6;margin-top:0}.content img{max-width:100%}.content code{background-color:rgba(0,0,0,0.05);padding:3px;border-radius:3px}.content pre>code{background-color:transparent;padding:0}.content aside{padding-top:1em;padding-bottom:1em;margin-top:1.5em;margin-bottom:1.5em;background:#8fbcd4;line-height:1.6}.content aside.warning{background-color:#c97a7e}.content aside.success{background-color:#6ac174}.content aside:before{vertical-align:middle;padding-right:0.5em;font-size:14px}.content .search-highlight{padding:2px;margin:-3px;border-radius:4px;border:1px solid #f7e633;background:-webkit-gradient(linear, right bottom, left top, from(#f7e633), to(#f1d32f));background:linear-gradient(to top left, #f7e633 0%, #f1d32f 100%)}.content>div.highlight{clear:none}.content pre,.content blockquote{background-color:#1E2224;color:#fff;margin:0;width:40%;float:right;clear:right;-webkit-box-sizing:border-box;box-sizing:border-box}.content pre>p,.content blockquote>p{margin:0}.content pre a,.content blockquote a{color:#fff;text-decoration:none;border-bottom:dashed 1px #ccc}.content pre{padding-top:2em;padding-bottom:2em;padding:2em 28px}.content blockquote>p{background-color:#191D1F;padding:13px 2em;color:#eee}@media (max-width: 930px){.toc-wrapper{left:-230px}.toc-wrapper.open{left:0}.page-wrapper{margin-left:0}#nav-button{display:block}.toc-link{padding-top:0.3em;padding-bottom:0.3em}}@media (max-width: 700px){.dark-box{display:none}.content>h1,.content>h2,.content>h3,.content>h4,.content>h5,.content>h6,.content>p,.content>table,.content>ul,.content>ol,.content>aside,.content>dl{margin-right:0}.toc-wrapper .lang-selector{display:block}.page-wrapper .lang-selector{display:none}.content pre,.content blockquote{width:auto;float:none}.content>pre+h1,.content>blockquote+h1,.content>pre+h2,.content>blockquote+h2,.content>pre+h3,.content>blockquote+h3,.content>pre+h4,.content>blockquote+h4,.content>pre+h5,.content>blockquote+h5,.content>pre+h6,.content>blockquote+h6,.content>pre+p,.content>blockquote+p,.content>pre+table,.content>blockquote+table,.content>pre+ul,.content>blockquote+ul,.content>pre+ol,.content>blockquote+ol,.content>pre+aside,.content>blockquote+aside,.content>pre+dl,.content>blockquote+dl{margin-top:28px}}.highlight .c,.highlight .cm,.highlight .c1,.highlight .cs{color:#909090}.highlight,.highlight .w{background-color:#1E2224}.copy-clipboard{float:right;fill:#9daab6;cursor:pointer;opacity:0.4;height:18px;width:18px}.copy-clipboard:hover{opacity:0.8}</style>
+    <style media="print">/*! normalize.css v3.0.2 | MIT License | git.io/normalize */html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:0.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-webkit-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code{font-family:sans-serif}kbd,pre,samp{font-family:monospace, monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{-webkit-box-sizing:border-box;box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}.content h1,.content h2,.content h3,.content h4,body{font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";font-size:14px}.content h1,.content h2,.content h3,.content h4{font-weight:bold}.content pre,.content code{font-family:Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;font-size:12px;line-height:1.5}.content pre,.content code{word-break:break-all;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto}.tocify,.toc-footer,.lang-selector,.search,#nav-button{display:none}.tocify-wrapper>img{margin:0 auto;display:block}.content{font-size:12px}.content pre,.content code{border:1px solid #999;border-radius:5px;font-size:0.8em}.content pre code{border:0}.content pre{padding:1.3em}.content code{padding:0.2em}.content table{border:1px solid #999}.content table tr{border-bottom:1px solid #999}.content table td,.content table th{padding:0.7em}.content p{line-height:1.5}.content a{text-decoration:none;color:#000}.content h1{font-size:2.5em;padding-top:0.5em;padding-bottom:0.5em;margin-top:1em;margin-bottom:21px;border:2px solid #ccc;border-width:2px 0;text-align:center}.content h2{font-size:1.8em;margin-top:2em;border-top:2px solid #ccc;padding-top:0.8em}.content h1+h2,.content h1+div+h2{border-top:none;padding-top:0;margin-top:0}.content h3,.content h4{font-size:0.8em;margin-top:1.5em;margin-bottom:0.8em;text-transform:uppercase}.content h5,.content h6{text-transform:uppercase}.content aside{padding:1em;border:1px solid #ccc;border-radius:5px;margin-top:1.5em;margin-bottom:1.5em;line-height:1.6}.content aside:before{vertical-align:middle;padding-right:0.5em;font-size:14px}@media print{.copy-clipboard{display:none}}header .lang{display:none;width:78px;height:26px;line-height:26px;text-align:center;border:1px solid #383f66;color:#adc1d5;text-decoration:none;border-radius:3px;-webkit-transition:all 300ms;transition:all 300ms}header .lang:hover{color:#357ce1;border-color:#357ce1}</style>
+      <script>function copyToClipboard(e){var t=document.createElement("textarea");t.value=e.textContent,document.body.appendChild(t),t.select(),document.execCommand("copy"),document.body.removeChild(t)}function setupCodeCopy(){for(var e=document.querySelectorAll("pre.highlight"),t=0;t<e.length;t++){var n=e[t],o=document.createElement("div");o.className="copy-clipboard",o.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg>',n.insertBefore(o,n.firstChild),o.addEventListener("click",function(){copyToClipboard(this.parentNode.children[1])})}}function initMenuActive(e){document.querySelectorAll(".toc-nav-list li").forEach(function(t,n){t.classList.remove("selected"),n===e&&t.classList.add("selected")});var t=document.querySelector(".toc-nav-dropdown");if(t)for(var n=t.options,o=0;o<n.length;o++)n[o].selected=o===e}function init(e){initMenuActive(e)}function adjustLanguageSelectorWidth(){var e=document.querySelector(".dark-box > .lang-selector");e&&e.parentElement&&(e.style.width=e.parentElement.offsetWidth+"px")}!function(){if("ontouchstart"in window){var e,t,n,o,r,i,a={};e=function(e,t){return Math.abs(e[0]-t[0])>5||Math.abs(e[1]-t[1])>5},t=function(e){this.startXY=[e.touches[0].clientX,e.touches[0].clientY],this.threshold=!1},n=function(t){if(this.threshold)return!1;this.threshold=e(this.startXY,[t.touches[0].clientX,t.touches[0].clientY])},o=function(t){if(!this.threshold&&!e(this.startXY,[t.changedTouches[0].clientX,t.changedTouches[0].clientY])){var n=t.changedTouches[0],o=document.createEvent("MouseEvents");o.initMouseEvent("click",!0,!0,window,0,n.screenX,n.screenY,n.clientX,n.clientY,!1,!1,!1,!1,0,null),o.simulated=!0,t.target.dispatchEvent(o)}},r=function(e){var t=Date.now(),n=t-a.time,o=e.clientX,r=e.clientY,c=[Math.abs(a.x-o),Math.abs(a.y-r)],s=i(e.target,"A")||e.target,l=s.nodeName,u="A"===l,d=window.navigator.standalone&&u&&e.target.getAttribute("href");if(a.time=t,a.x=o,a.y=r,(!e.simulated&&(n<500||n<1500&&c[0]<50&&c[1]<50)||d)&&(e.preventDefault(),e.stopPropagation(),!d))return!1;d&&(window.location=s.getAttribute("href")),s&&s.classList&&(s.classList.add("energize-focus"),window.setTimeout(function(){s.classList.remove("energize-focus")},150))},i=function(e,t){for(var n=e;n!==document.body;){if(!n||n.nodeName===t)return n;n=n.parentNode}return null},document.addEventListener("touchstart",t,!1),document.addEventListener("touchmove",n,!1),document.addEventListener("touchend",o,!1),document.addEventListener("click",r,!0)}}(),function(){"use strict";function e(e){if(!e)return"";try{return e=e.replace(/^\?/,""),e.split("&").map(function(e){var t=e.split("=");if(2!==t.length)return"";var n=decodeURIComponent(t[0]),o=decodeURIComponent(t[1]);return n=n.replace(/[^a-zA-Z0-9-_]/g,""),o=o.replace(/[^a-zA-Z0-9-_]/g,""),n?n+"="+o:""}).filter(Boolean).join("&")}catch(e){return console.error("Search sanitization failed:",e),""}}function t(e){if(!e)return"";try{return e=e.replace(/^#+/,""),"#"+e.replace(/[^a-zA-Z0-9-_]/g,"")}catch(e){return console.error("Hash sanitization failed:",e),""}}window.XSS={sanitizeLocation:function(){return{search:e(location.search),hash:t(location.hash)}}},Object.freeze(XSS)}(),document.addEventListener?document.addEventListener("DOMContentLoaded",setupCodeCopy):window.attachEvent("onload",setupCodeCopy),function(){"use strict";function e(e,t){var n=!1;return function(){!1===n&&(setTimeout(function(){e(),n=!1},t),n=!0)}}function t(){var e=document.querySelector(".toc-wrapper"),t=document.getElementById("nav-button");e&&e.classList.remove("open"),t&&t.classList.remove("open")}function n(){return window.scrollY||window.pageYOffset||document.documentElement.scrollTop}function o(o,a,c,s){function l(){f={},v=document.documentElement.scrollHeight,g=window.innerHeight,o.querySelectorAll(a).forEach(function(e){var t=e.getAttribute("href");if(t&&"#"===t[0]){var o=document.getElementById(t.substring(1));o&&(f[t]=o.getBoundingClientRect().top+n())}})}function u(){var e=n()+s;e+g>=v&&(e=v+1e3);var t=null;for(var l in f)(f[l]<e&&f[l]>f[t]||null===t)&&(t=l);if(e==s&&!i){if(t=XSS.sanitizeLocation().hash,i=!0,t&&"#"!==t){var u=document.getElementById(t.substring(1));u&&u.scrollIntoView({behavior:"auto",block:"start"})}}var d=o.querySelector("[href='"+t+"']");if(d&&!d.classList.contains("active")){o.querySelectorAll(".active").forEach(function(e){e.classList.remove("active")});o.querySelectorAll(".active-parent").forEach(function(e){e.classList.remove("active-parent")}),d.classList.add("active");for(var h=[],p=d.parentElement;p;)p.matches&&p.matches(c)&&(p.classList.add("active"),h.push(p)),p=p.parentElement;h.forEach(function(e){var t=e.previousElementSibling;t&&t.matches&&t.matches(a)&&t.classList.add("active-parent")});var w=d.nextElementSibling;w&&w.matches&&w.matches(c)&&w.classList.add("active");o.querySelectorAll(c).forEach(function(e){e.classList.contains("active")?e.style.display="block":e.style.display="none"}),window.history.replaceState&&window.history.replaceState(null,"",t);var y=d.getAttribute("data-title");void 0!==y&&y&&y.length>0?document.title=y.replace(r,"")+" \u2013 "+m:document.title=m}}function d(){l(),u();var n=document.getElementById("nav-button");n&&n.addEventListener("click",function(e){document.querySelector(".toc-wrapper").classList.toggle("open"),this.classList.toggle("open"),e.preventDefault()}),document.querySelector(".page-wrapper").addEventListener("click",t),o.querySelectorAll(".toc-link").forEach(function(e){e.addEventListener("click",function(){t(),h()})}),window.addEventListener("scroll",e(u,200)),window.addEventListener("resize",e(l,200))}function h(){if(!p){p=!0;(window.requestAnimationFrame||function(e){return setTimeout(e,0)})(function(){u(),p=!1})}}var f={},v=0,g=0,m=document.title;Element.prototype.closestAll||(Element.prototype.closestAll=function(e){for(var t=[],n=this;n;)n.matches(e)&&t.push(n),n=n.parentElement;return t});var p=!1;d(),window.recacheHeights=l,window.refreshToc=u}var r=/<[^>]*>/g,i=!1;window.loadToc=o}(),function(){"use strict";function e(e){try{return localStorage.getItem(e)}catch(e){return console.error("Storage access failed:",e),null}}function t(e,t){try{return localStorage.setItem(e,t),!0}catch(e){return console.error("Storage write failed:",e),!1}}function n(e){return e&&"string"==typeof e&&e.length<=h&&/^[a-zA-Z0-9-_]+$/.test(e)&&-1!==u.indexOf(e)}function o(e){if(n(e))try{document.querySelectorAll(".lang-selector a").forEach(function(t){t.classList.remove("active"),t.getAttribute("data-language-name")===e&&t.classList.add("active")}),u.forEach(function(e){var t=document.querySelectorAll(".highlight.tab-"+e),n=document.querySelectorAll(".lang-specific."+e);t.forEach(function(e){e.style.display="none"}),n.forEach(function(e){e.style.display="none"})});var t=document.querySelectorAll(".highlight.tab-"+e),o=document.querySelectorAll(".lang-specific."+e);t.forEach(function(e){e.style.display="block"}),o.forEach(function(e){e.style.display="block"}),window.recacheHeights&&window.recacheHeights();var r=XSS.sanitizeLocation(),i=r.hash;if(i){var a=document.querySelector(i);a&&a.scrollIntoView(!0)}}catch(e){console.error("Language activation failed:",e)}}function r(e){if("string"!=typeof e)return{};try{return e?(e=e.trim().replace(/^(\?|#|&)/,""),e?e.split("&").reduce(function(e,t){var n=t.replace(/\+/g," ").split("=");if(2!==n.length)return e;var o=n[0],r=n[1];try{if(o=decodeURIComponent(o),r=decodeURIComponent(r),!o)return e;e.hasOwnProperty(o)?Array.isArray(e[o])?e[o].push(r):e[o]=[e[o],r]:e[o]=r}catch(e){console.error("Error parsing URL parameter:",e)}return e},{}):{}):{}}catch(e){return console.error("Error parsing URL:",e),{}}}function i(e){return e?Object.keys(e).sort().map(function(t){var n=e[t];return Array.isArray(n)?n.sort().map(function(e){return encodeURIComponent(t)+"="+encodeURIComponent(e)}).join("&"):encodeURIComponent(t)+"="+encodeURIComponent(n)}).join("&"):""}function a(){var e=XSS.sanitizeLocation(),t=e.search;if(!t)return!1;var o=r(t),i=o.language;return!!n(i)&&i}function c(e){var t=XSS.sanitizeLocation(),n=t.search,o=r(n);return o.language=e,i(o)}function s(e){if(n(e)&&history)try{var t=c(e),o=XSS.sanitizeLocation(),r=o.hash,i="?"+t+r;history.pushState({},"",i)}catch(e){console.error("Error pushing URL:",e)}}function l(n){var r=e(d);u=n;var i=a();i?(o(i),t(d,i)):o(null!==r&&-1!==u.indexOf(r)?r:u[0]),document.querySelectorAll(".lang-selector a").forEach(function(e){e.addEventListener("click",function(e){var n=this.getAttribute("data-language-name");t(d,n),s(n),o(n),e.preventDefault()})})}var u=[],d="language",h=50;window.setupLanguages=l,window.activateLanguage=o,window.getLanguageFromQueryString=a}(),document.addEventListener("DOMContentLoaded",function(){function e(e){var t=e.target;if(t.classList.contains("toc-link"))if(t.classList.contains("active-parent"))setTimeout(function(){var e=t.nextElementSibling;e&&"UL"===e.tagName&&(e.style.display="none")});else{var n=t.nextElementSibling;n&&"UL"===n.tagName&&(n.style.display="none"===n.style.display?"block":"none")}}function t(){var e=document.querySelector(".page-wrapper .content");e&&(e.style.paddingBottom=window.innerHeight-100+"px")}function n(){++l===u&&(window.recacheHeights&&window.recacheHeights(),window.refreshToc&&window.refreshToc())}var o=document.getElementById("toc");o&&loadToc(o,".toc-link",".toc-list-h2, .toc-list-h3",10);var r=document.querySelector(".toc-wrapper");r&&r.addEventListener("click",e),t(),window.addEventListener("resize",function(){t(),adjustLanguageSelectorWidth()});var i=document.body;if(i){var a=i.getAttribute("data-languages");a&&setupLanguages(JSON.parse(a))}var c=document.querySelector(".content");if(c){for(var s=c.getElementsByTagName("img"),l=0,u=s.length,d=0;d<u;d++)s[d].complete?n():(s[d].addEventListener("load",n),s[d].addEventListener("error",n));0===u&&(window.recacheHeights&&window.recacheHeights(),window.refreshToc&&window.refreshToc())}setTimeout(function(){window.location.hash&&window.refreshToc&&window.refreshToc()},100),adjustLanguageSelectorWidth()}),window.addEventListener("popstate",function(){var e=getLanguageFromQueryString();e&&activateLanguage(e)});</script>
+
+    <script>
+      var currentHref = window.location.href;
+      var pathname = window.location.pathname;
+      var pathArr = pathname.split('/').reverse();
+      var modules = ['zh', 'agent_zh', 'outcomes_zh', 'broker_zh', 'trick_zh', 'log_zh'];
+      var moduleType = pathArr[0].replace('.html', '');
+      var moduleIndex = modules.indexOf(moduleType);
+      var switchLanguage = true;
+
+      function sanitizePath(pathArr) {
+        pathArr = pathArr.filter(function(segment) { return segment !== '@'; });
+        var path = pathArr.join('/');
+        path = path.replace(/\/+/g, '/');
+        return path;
+      }
+
+      // Initialize when DOM is loaded
+      if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', () => {
+          init(moduleIndex);
+        });
+      } else {
+        // Fallback for older browsers
+        window.attachEvent('onload', () => {
+          init(moduleIndex);
+        });
+      }
+
+      function changeHyperlink() {
+        if (switchLanguage) {
+          switchLanguage = false;
+          var hash = window.location.hash;
+          var newPath = pathname.replace("zh","en") + hash;
+          window.location.href = sanitizePath(newPath.split('/'));
+        }
+      }
+
+      function changeMenuLink(type) {
+        pathArr[1] = type;
+        window.location.href = sanitizePath(pathArr.reverse());
+      }
+    </script>
+    <style>
+        .content aside.notice:before {
+                content: '';
+                display: inline-block;
+                height: 16px;
+                width: 16px;
+                background-image: url("data:image/image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAD1BMVEUAAAAgX+wgYOsgYOsgX+zxKDX3AAAABHRSTlMAv4BAMM4GbAAAAIhJREFUKM+NkcsRgCAMRP0V4GgK0BkK8GABBum/JgdYFxQO5AL7CEtm6Rpr3EWXI9PifG0/7ewLToe60eBY0WaCYotJQL0ewnaN+OCNGQvfsAITWqRRJGzANYGJIPZemKYGJAdaAwaAz54AHKzHiQkccQAgRflMTpPoVERYD5kJKL9qgC6+sq0e+31Meuswx+MAAAAASUVORK5CYII=");
+                background-repeat: no-repeat;
+                background-size: auto 100%;
+                padding: 0;
+                margin-right: 7px;
+                vertical-align: text-bottom;
+              }
+          .content aside.warning:before {
+              content: '';
+              display: inline-block;
+              height: 16px;
+              width: 16px;
+              background-image: url("data:image/image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAD1BMVEUAAADjYGDjXl7jXV3jXl6rsL0UAAAABHRSTlMAQIC/o1TdDAAAAIpJREFUKM+dkd0NgCAMhAEdwL8BNHEAjQ7gz+0/k4HDFsML8Z7gS3twrSlW236u3Q7co94dgoRYRDURzAC2DcCVFBijJbWCQzrQWEgPCMTWKeDLVQoW70ng8LoOrCU4/wGarr2YVki0yMduHYlNPRiOJw1X86can8F3htWeQLMh52sQ4hc1Zass1ANrMkLgf7knqgAAAABJRU5ErkJggg==");
+              background-repeat: no-repeat;
+              background-size: auto 100%;
+              padding: 0;
+              margin-right: 7px;
+            vertical-align: text-bottom;
+            }
+            .toc-wrapper .search:before {
+                content: '';
+                height: 12px;
+                width: 12px;
+                background-image: url("data:image/image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAD1BMVEUAAAD///////////////+PQt5oAAAABHRSTlMAgL9ARyeO/QAAAKpJREFUKM9lkdENwyAMRE3oAE3FAFFhABQxQEpu/5naXjGulfsyjztjZPkq7sBaZSoWfPS6/59JFDTAkQgg17gCqAQ3gOkAHASJVhadFzSw+mUW616wscVhz51MjoSaC4NjgE4gHsAA6yvwEd80ECRsE/DZpoNxRj96Ioj2uVGV+f1RLONiBwEzWLkJDTeoLEz1pJZQeK7BdvN49lxFpsVmx2kn24S3iFfKb13fLBtfa1iNAAAAAElFTkSuQmCC");
+              background-repeat: no-repeat;
+              background-size: auto 100%;
+              top: 19px
+            }
+        </style>
+  </head>
+
+  <body class="index is-agent" data-languages="[]">
+    <a href="#" id="nav-button">
+      <!--<span>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAAAnRSTlMAAHaTzTgAAAAZSURBVHgBYxgswBIIsLFGrIJRBaMKBh4AAE3cQCEvEU3+AAAAAElFTkSuQmCC" alt="Navbar">
+      </span>-->
+       <span>
+         导航
+         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAAAnRSTlMAAHaTzTgAAAAZSURBVHgBYxgswBIIsLFGrIJRBaMKBh4AAE3cQCEvEU3+AAAAAElFTkSuQmCC" alt="">
+       </span>
+    </a>
+
+    <header>
+      <div class="toc-left">
+        <a href="/">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAABICAYAAAB4M164AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAiXSURBVHgB7Z1vetQ2EMYnffK94QSYE5D2ACDgewnt97JwAf4coEk4AJALkA0HaNMegLg9QEkP0OJcoKQXQNW7lrOKVhrJspdswvyeR9nElmzv7usZaTRWiARBEARBEARBEARBEARBEARBEARBEGiNhM+O1hovyhaf6draWkNfKOvmw5mY14rKeW0+wFMqxJz/iXm5RmV8MOc+oEuEFeMdU94x1XZovHNt2LJSxG66dVP2aRi1Lb0xH5gyL69pGKMI0lxLZV62adjNGWLPfPiHzt/wSg8jdaGg4pv73IFaMX5jyp+0guj2Ar81n82xu32dhI6npkxofPCBH3rbbkbqQqzb1mvk8tGUx/4Xa9mk1WbBcosg5yzdrTkudDNxHX2u5bo93jFdAUSQ+TRUhi8UReNTKkZY7r9oecDS97rRRZD5PDJusaZhwCXfZvafUrgPyVnN04i7TgFz/atpO6UlYLxB11cWQa44MUFCIHd8cVk3/8CUnyPtfqcrhAgyn00rDpfGD1+YOrAIW84mWDyIDPW4/mPM0sHS3I+0wQUdUjkbNrqwDIpi3CLIfF4FtjWm3Oj+sGJ8T4uhI4TWHhM/mOHcLufmSy0kBPOKwu/rwhBBDqNCLNXpW8IyVoF6/1Ha0v1mBY32br/rGsVjo81Vm9URQeYDCxaycIrmEwMhwc0GD/b3WPwRIJ4Ysq4cNV0xRJD5YEYoJEiMJHfs7yqwH33D2o46Q/s7vqJ+YnSFXkpN5eGsHOAxZJS9JDA4qWlRVJUdGKCEPvxDJ5kiBvqB3zH7d2nRGpaGezpwUQdLDvsoEkEuFQhHBbbDEmwybUBsjnomDIoPLrD/i8kAEkH2Y0ptAoYP+o5VpA2Cz7AY6B9iRA7hdlYDIm2oHfDELMnxksSIc1Y2wWUZKCpIVBFB9gDCMF9gQ4sftIo0qbvUPIiSWvE1bgXrzp9RnGXOUW9T+Ab7HDShmS8IEv2T61TO1sC7rKZyhnbqS8+Zm40zzagDpd6K7INar9RMjMPb0MZ1o9IdKsR25j/QMG5csv4RZkZyBZkrJsXsW2byw0WAm+y5+c5fh3aKy+6JDeHADadGj3XqRnNG32MnTnT8Qm3s82u6eE6o7a4cck8YiCDLwKg4ZSVzuxPcdGKxu7Z91lMj+qf2HP55ZplFI2QwrQ5w2Xo4Fa0A5jqmieucOHXVGO/L1Fkz5ShxHOzf1wWfk2mDssMc+5Mpm7RCiIUsA26Uc9t95phTglD2FQPPu5SJbrsDCDNxo+hmYJdgdESQBaAPZL5wuOTYw1pJd63T/UcfWOWNHk94wme/S9WBBaaL4715P8/dDSLIcmqKCzI3R/E29QP1c8U+oXRguqKC4PWI4P2cE+RXJJRSx3ZkDhRSjzOE6qtUJcdV/0SXELGQ5UT7fvp8jiSHon5givJZos7sUVriLV+XxQ7cqcwQtfN76onJhhazhxT1QARZzhazTxFjQXU6+ydGxfUj7XFxXQ+ZY2AiA4OjhlpL+g9T98ic665zbG7FDVTYcwPeus34+UQ9EJddzu3CfYDLHk+xlTjuS2Y/RLPrRABSI3x/lihVf+isnQiyBN3O3VdMFZURN7xJ/YnOe2cOZI6dtZBSNwUOWHvbUjM+JzQQEWQZk4w6QUum56tXKCojZiEhMG4ggxN/721LWfIT7/ipm6ihgYggy8gZHXPWJ+X6Dph93KOr3ODkReeqnT5sxdQPzaOn6ufGSKPIoKYndqqtyqgaC2SnXGVNrSC5gQmspJ8tA5VhtTMVqO/nHnIrsHWEZnBKH+PNButD7tOw4OiUyqlMeaXbxz9LQJ8oFQYZm0mPuhDONLCds7D4YmuKT0128ctzgnQSgKfEYK1jRWkr/4fXRiXqj5Mmp4ejqBCdl6TAQiOhM5MrzOt7nc+Rdw6Ua0x9JDvc1+mki3+pEJ1OuOiuQzltcD3TRP0ngXOtpc7jt5E+ZA9023cLua2Gwg9xYfkV38op4kHK2WzhAKbOhi4wBDov4QKcuXidF9sEo2S2iyD7ERvh7lF4jtmf2UhNFx47fc6aqZc1jRhpl0q4mMUqvTYvE21GyxoSQfYjNhipKS6gH72/k+v02P5gl+IW4xb1wFq61JQiqLtYZWYbVNqhkRBB5lNRfATbLdscEtDMqur5YCI2Ug0FornMnlB3IHzgfFeNmZbHPdvg/b+lkRBB5hOzbDV+WFcbcltuf6/PVJ0mfuSaSnRwyXbVzrRibpsdGhERZD4qst0NYocsWhd3TMUfQwsCHDL1s+bDe7jqPc9VTzLaHI5pHYEIchh+wHkaqdfNAXNTb+esa2xhAQ82lqjnGTopt4uMn12nTU4+5exxVhoZmanJp7avlX1tqB1dn2EfbcAXC8vV9e+6EA7acf3HWNiEW5hg1o8MTdk5wnpDPKh4zzkG7oQdSg9kdpfyPL0ejqJC9OUKjCsqRLfB6EfMsRFYrgrbTSLnTAWzu/bbPc7X8TflvW8JjC+RispJxR+5pxRT/ciF8I+e9wFTwWw8ZOXHHHNc9b3QOa0AzwoVxErFZc9BH477AvfNhwxX3DejBQMFuGNOkHVoo101rRu9x9y9cv/Q+X1AhHh+cNrlPPrQZYU3kXP6o/KKeBaiEiLIOXVGnS0q44TiXw7Xf+zA/pggKyOIygvXvKGMYLaXjob6yZgjnZ/FcVHUfwXgA3+juGyLDW7v0nJIxQs5QeYs3axmFefzzipxvD0vXNNZR0q0e8bkPPbpz88mAcyx9vwdIkgHuxLcIxp3TUb8BwbOzb/gRqs2/HNE/M3iZv/AFWNxVB0oWFh/N5Cyh33Hdn9X94Mt2p7/gWnH3RiN04YrWABr0j08tvB+9bD/l/0xpPJcdDv19ZTKWdr/y7bXVpqneYZd5JQo/O/hsrOsxziGIAiCIAiCIAiCIAiCIAiCIAiCIAjCJeF/qDCVi8SMnzAAAAAASUVORK5CYII=" class="logo" alt="">
+        </a>
+        <div class="toc-split-line"></div>
+        <ul class="toc-nav-list">
+          <li><a href="zh.html">API接口</a></li>
+          <li class="selected"><a href="agent_zh.html">🔥 Agent</a></li>
+          <li><a href="outcomes_zh.html">Outcomes</a></li>
+          <li><a href="broker_zh.html">Broker接入</a></li>
+          <li><a href="trick_zh.html">最佳实践</a></li>
+          <li><a href="log_zh.html">更新日志</a></li>
+        </ul>
+        <select class="toc-nav-dropdown" onchange="javascript:changeMenuLink(options[selectedIndex].value)">
+          <option value="zh">API接口</option>
+          <option value="agent_zh">Agent</option>
+          <option value="outcomes_zh">Outcomes</option>
+          <option value="broker_zh">Broker接入</option>
+          <option value="trick_zh">最佳实践</option>
+          <option value="log_zh">更新日志</option>
+        </select>
+      </div>
+
+      <div class="switch-language">
+        <a onclick="javascript:changeHyperlink()" class="toc-link" style="display: inline-block;" href="javascript:void(0);">English</a>
+      </div>
+    </header>
+    <div class="toc-wrapper">
+        <ul id="toc" class="toc-list-h1">
+            <li>
+              <a href="#introduction" class="toc-h1 toc-link active" data-title="简介 ">简介 </a>
+                <ul class="toc-list-h2 active" style="display: block;">
+                    <li>
+                      <a href="#introduction-what-can-it-do" class="toc-h2 toc-link" data-title="支持哪些功能？ ">支持哪些功能？ </a>
+                    </li>
+                    <li>
+                      <a href="#introduction-three-ways-to-use-it" class="toc-h2 toc-link" data-title="三种使用方式 ">三种使用方式 </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+              <a href="#quick-start" class="toc-h1 toc-link" data-title="快速开始 ">快速开始 </a>
+                <ul class="toc-list-h2" style="display: none;">
+                    <li>
+                      <a href="#quick-start-openclaw" class="toc-h2 toc-link" data-title="OpenClaw ">OpenClaw </a>
+                    </li>
+                    <li>
+                      <a href="#quick-start-mcp-clients" class="toc-h2 toc-link" data-title="MCP 客户端 ">MCP 客户端 </a>
+                        <ul class="toc-list-h3" style="display: none;">
+                            <li>
+                              <a href="#quick-start-step-1-install" class="toc-h3 toc-link" data-title="第一步 — 安装 ">第一步 — 安装 </a>
+                            </li>
+                            <li>
+                              <a href="#quick-start-step-2-add-your-okx-api-credentials" class="toc-h3 toc-link" data-title="第二步 — 添加 OKX API 凭证 ">第二步 — 添加 OKX API 凭证 </a>
+                            </li>
+                            <li>
+                              <a href="#quick-start-step-3-connect-your-ai-client" class="toc-h3 toc-link" data-title="第三步 — 连接 AI 客户端 ">第三步 — 连接 AI 客户端 </a>
+                            </li>
+                            <li>
+                              <a href="#quick-start-step-4-try-it" class="toc-h3 toc-link" data-title="第四步 — 试用 ">第四步 — 试用 </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+              <a href="#mcp" class="toc-h1 toc-link" data-title="MCP ">MCP </a>
+                <ul class="toc-list-h2" style="display: none;">
+                    <li>
+                      <a href="#mcp-startup-options" class="toc-h2 toc-link" data-title="启动选项 ">启动选项 </a>
+                    </li>
+                    <li>
+                      <a href="#mcp-tools" class="toc-h2 toc-link" data-title="工具列表 ">工具列表 </a>
+                        <ul class="toc-list-h3" style="display: none;">
+                            <li>
+                              <a href="#market" class="toc-h3 toc-link" data-title="market — 行情数据">market — 行情数据</a>
+                            </li>
+                            <li>
+                              <a href="#spot" class="toc-h3 toc-link" data-title="spot — 现货交易">spot — 现货交易</a>
+                            </li>
+                            <li>
+                              <a href="#swap" class="toc-h3 toc-link" data-title="swap — 永续合约">swap — 永续合约</a>
+                            </li>
+                            <li>
+                              <a href="#futures" class="toc-h3 toc-link" data-title="futures — 交割合约">futures — 交割合约</a>
+                            </li>
+                            <li>
+                              <a href="#option" class="toc-h3 toc-link" data-title="option — 期权">option — 期权</a>
+                            </li>
+                            <li>
+                              <a href="#account" class="toc-h3 toc-link" data-title="account — 账户管理">account — 账户管理</a>
+                            </li>
+                            <li>
+                              <a href="#bot" class="toc-h3 toc-link" data-title="bot — 策略机器人">bot — 策略机器人</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+              <a href="#cli" class="toc-h1 toc-link" data-title="命令行 ">命令行 </a>
+            </li>
+            <li>
+              <a href="#skills" class="toc-h1 toc-link" data-title="Skills ">Skills </a>
+            </li>
+            <li>
+              <a href="#safety" class="toc-h1 toc-link" data-title="安全 ">安全 </a>
+            </li>
+            <li>
+              <a href="#faq" class="toc-h1 toc-link" data-title="常见问题 ">常见问题 </a>
+            </li>
+            <li>
+              <a href="#links" class="toc-h1 toc-link" data-title="相关链接 ">相关链接 </a>
+            </li>
+            <li>
+              <a href="#community" class="toc-h1 toc-link" data-title="社群 ">社群 </a>
+            </li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+        <div class="dark-box"></div>
+        <div class="content" style="padding-bottom: 500px;">
+          <h1 id="introduction">简介 </h1>
+<p>OKX Agent Trade Kit 将 AI 助手与您的 OKX 账户直接连接。无需在 AI 和交易所之间来回切换，只需用自然语言描述您的需求，AI 即可自动执行。<br><br></p>
+
+<p>它以<strong>本地进程</strong>的方式运行在您的设备上。您的 API Key 永远不会离开本地。完全开源，遵循 MIT 协议。<br><br></p>
+
+<p><strong>OKX 官方 AI 智能交易工具包。</strong> 让您的 AI Agent通过自然语言，在 <a href="https://www.okx.com">OKX</a> 上交易现货、合约、期权等多种产品。</p>
+
+<p><a href="https://github.com/okx/agent-trade-kit">GitHub</a> · <a href="https://www.npmjs.com/package/okx-trade-mcp">npm: okx-trade-mcp</a> · <a href="https://www.npmjs.com/package/okx-trade-cli">npm: okx-trade-cli</a></p>
+
+<blockquote>
+<p><strong>本页内容可能未反映最新版本。</strong> 如需查看最新工具列表、模块说明、配置选项及更新日志，请以 GitHub 仓库为准：<a href="https://github.com/okx/agent-trade-kit">github.com/okx/agent-trade-kit</a></p>
+</blockquote>
+<h2 id="introduction-what-can-it-do">支持哪些功能？ </h2>
+<ol>
+<li><strong>行情数据</strong> — 价格、订单簿、K线、资金费率、持仓量</li>
+<li><strong>现货交易</strong> — 下单、撤单、改单、批量操作、策略委托</li>
+<li><strong>合约与永续</strong> — 永续合约和交割合约、杠杆、持仓管理</li>
+<li><strong>期权</strong> — 下单、期权链、希腊字母（IV、Delta、Gamma、Theta、Vega）</li>
+<li><strong>策略委托</strong> — 条件单、OCO 止盈止损、追踪止损</li>
+<li><strong>账户</strong> — 余额、账单、手续费率、仓位管理</li>
+<li><strong>机器人</strong> — 创建、监控和停止网格策略</li>
+</ol>
+<h2 id="introduction-three-ways-to-use-it">三种使用方式 </h2>
+<ul>
+<li><strong>MCP 服务器（<code>okx-trade-mcp</code>）</strong> — 接入 Claude、Cursor、Codex、OpenCode 或任意支持 MCP 的 AI 客户端，让您的 Agent 通过自然语言调用 OKX 工具。</li>
+<li><strong>CLI（<code>okx-trade-cli</code>）</strong> — 在终端直接交易，支持管道、定时任务和脚本，无需 AI 客户端。</li>
+<li><strong>Skills（<code>okx-cex-market</code>、<code>okx-cex-trade</code>、<code>okx-cex-portfolio</code>、<code>okx-cex-bot</code>）</strong> — 即插即用模块，适用于支持 Skills 协议的 AI 客户端（如 OpenClaw）。按需安装，灵活搭配。</li>
+</ul>
+
+<p><strong>本页导航：</strong> <a href="agent_zh.html#quick-start-openclaw">OpenClaw</a> · <a href="agent_zh.html#quick-start-mcp-clients">MCP 客户端</a> · <a href="agent_zh.html#mcp">MCP 服务器</a> · <a href="agent_zh.html#cli">命令行</a> · <a href="agent_zh.html#skills">Skills</a> · <a href="agent_zh.html#safety">安全</a> · <a href="agent_zh.html#faq">常见问题</a></p>
+<h1 id="quick-start">快速开始 </h1><h2 id="quick-start-openclaw">OpenClaw </h2>
+<blockquote>
+<p><strong>安全提示：</strong> 切勿将您的 API Key、Secret Key 或 Passphrase 粘贴到对话框中。AI 不应也无需直接接触您的凭证，请始终将其保存在配置文件中。由于 AI 在 OpenClaw 中的行为具有不确定性，强烈建议使用<strong>子账户的 API Key</strong> 而非主账户，并仅开启所需的最小权限。</p>
+</blockquote>
+
+<p><strong>第一步 — 安装 Skills</strong></p>
+
+<p>打开 OpenClaw，将以下提示语粘贴到对话框中发送——不是命令行：</p>
+
+<blockquote>
+<p>运行 <code>npx skills add okx/agent-skills</code>，自主解决所有碰到的问题，查询 BTC 价格。</p>
+</blockquote>
+
+<p><strong>第二步 — 配置 API 凭证</strong></p>
+
+<p>打开终端，运行：</p>
+<div class="highlight"><pre class="highlight shell"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code><span class="nb">mkdir</span> <span class="nt">-p</span> ~/.okx <span class="o">&amp;&amp;</span> <span class="nb">cat</span> <span class="o">&gt;</span> ~/.okx/config.toml <span class="o">&lt;&lt;</span> <span class="sh">'</span><span class="no">EOF</span><span class="sh">'
+default_profile = "demo"
+
+[profiles.live]
+api_key    = "your-live-api-key"
+secret_key = "your-live-secret-key"
+passphrase = "your-live-passphrase"
+
+[profiles.demo]
+api_key    = "your-demo-api-key"
+secret_key = "your-demo-secret-key"
+passphrase = "your-demo-passphrase"
+demo       = true
+</span><span class="no">EOF
+</span></code></pre></div>
+<p>用任意文本编辑器打开 <code>~/.okx/config.toml</code>，填入您的 <code>api_key</code>、<code>secret_key</code> 和 <code>passphrase</code>，保存即可。</p>
+
+<p><strong>获取 API Key：</strong> <a href="https://www.okx.com/account/my-api">API 页面</a> — 建议先从模拟盘开始。</p>
+<h2 id="quick-start-mcp-clients">MCP 客户端 </h2>
+<p>Claude Desktop、Claude Code、Cursor、VS Code、Windsurf，以及所有兼容 MCP 的客户端。</p>
+<h3 id="quick-start-step-1-install">第一步 — 安装 </h3><div class="highlight"><pre class="highlight shell"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code>npm <span class="nb">install</span> <span class="nt">-g</span> @okx_ai/okx-trade-mcp @okx_ai/okx-trade-cli
+</code></pre></div>
+<p>验证安装：</p>
+<div class="highlight"><pre class="highlight shell"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code>okx market ticker BTC-USDT
+</code></pre></div>
+<p>💡 行情数据可立即使用，无需 API Key。</p>
+<h3 id="quick-start-step-2-add-your-okx-api-credentials">第二步 — 添加 OKX API 凭证 </h3><div class="highlight"><pre class="highlight shell"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code>okx config init
+</code></pre></div>
+<p>交互式向导将引导您完成 <code>~/.okx/config.toml</code> 的创建与配置，运行一次即可完成。</p>
+
+<p><strong>获取 API Key：</strong> <a href="https://www.okx.com/account/my-api">API 页面</a> — 建议先从模拟盘开始。</p>
+
+<p><strong>或手动配置</strong> — 跳过向导，直接创建 <code>~/.okx/config.toml</code>：</p>
+<div class="highlight"><pre class="highlight toml tab-toml"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code><span class="py">default_profile</span> <span class="p">=</span> <span class="s">"demo"</span>    <span class="c"># 默认加载哪个 Profile</span>
+
+<span class="c"># Profile 名称是您自定义的标签，可随意命名。</span>
+<span class="c"># 启动时通过 --profile &lt;名称&gt; 切换不同配置。</span>
+<span class="c"># "demo" 和 "live" 只是惯用命名，名称本身没有特殊含义。</span>
+
+<span class="nn">[profiles.demo]</span>
+<span class="py">api_key</span>    <span class="p">=</span> <span class="s">"your-demo-api-key"</span>
+<span class="py">secret_key</span> <span class="p">=</span> <span class="s">"your-demo-secret-key"</span>
+<span class="py">passphrase</span> <span class="p">=</span> <span class="s">"your-demo-passphrase"</span>
+<span class="py">demo</span>       <span class="p">=</span> <span class="kc">true</span>    <span class="c"># demo = true → 模拟盘交易，不涉及真实资金</span>
+
+<span class="nn">[profiles.live]</span>
+<span class="py">api_key</span>    <span class="p">=</span> <span class="s">"your-live-api-key"</span>
+<span class="py">secret_key</span> <span class="p">=</span> <span class="s">"your-live-secret-key"</span>
+<span class="py">passphrase</span> <span class="p">=</span> <span class="s">"your-live-passphrase"</span>
+             <span class="c"># 无 demo 标志 → 实盘交易，使用真实资金</span>
+</code></pre></div><h4 id="quick-start-site-configuration">站点配置 </h4>
+<p>OKX 在不同地区运营独立站点。请在 Profile 中添加 <code>site</code> 字段，与您账号所在站点保持一致：</p>
+
+<table><thead>
+<tr>
+<th>站点</th>
+<th>网址</th>
+<th>适用人群</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>global</code> <em>（默认）</em></td>
+<td><code>www.okx.com</code></td>
+<td>全球大多数用户</td>
+</tr>
+<tr>
+<td><code>eea</code></td>
+<td><code>my.okx.com</code></td>
+<td>EEA / 欧洲用户</td>
+</tr>
+<tr>
+<td><code>us</code></td>
+<td><code>app.okx.com</code></td>
+<td>美国用户</td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre class="highlight toml tab-toml"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code><span class="nn">[profiles.live]</span>
+<span class="py">site</span>       <span class="p">=</span> <span class="s">"global"</span>    <span class="c"># global | eea | us（不填则默认为 global）</span>
+<span class="py">api_key</span>    <span class="p">=</span> <span class="s">"your-api-key"</span>
+<span class="py">secret_key</span> <span class="p">=</span> <span class="s">"your-secret-key"</span>
+<span class="py">passphrase</span> <span class="p">=</span> <span class="s">"your-passphrase"</span>
+</code></pre></div><h4 id="quick-start-proxy-configuration">代理配置 </h4>
+<p>如果您需要通过代理访问网络，可在 Profile 中添加 <code>proxy_url</code> 字段。根据代理类型选择以下其中一种配置：</p>
+
+<p>无需认证：</p>
+<div class="highlight"><pre class="highlight toml tab-toml"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code><span class="nn">[profiles.demo]</span>
+<span class="py">api_key</span>    <span class="p">=</span> <span class="s">"your-api-key"</span>
+<span class="py">secret_key</span> <span class="p">=</span> <span class="s">"your-secret-key"</span>
+<span class="py">passphrase</span> <span class="p">=</span> <span class="s">"your-passphrase"</span>
+<span class="py">demo</span>       <span class="p">=</span> <span class="kc">true</span>
+<span class="py">proxy_url</span>  <span class="p">=</span> <span class="s">"http://proxy.example.com:8080"</span>
+</code></pre></div>
+<p>需要用户名和密码：</p>
+<div class="highlight"><pre class="highlight toml tab-toml"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code><span class="nn">[profiles.demo]</span>
+<span class="py">api_key</span>    <span class="p">=</span> <span class="s">"your-api-key"</span>
+<span class="py">secret_key</span> <span class="p">=</span> <span class="s">"your-secret-key"</span>
+<span class="py">passphrase</span> <span class="p">=</span> <span class="s">"your-passphrase"</span>
+<span class="py">demo</span>       <span class="p">=</span> <span class="kc">true</span>
+<span class="py">proxy_url</span>  <span class="p">=</span> <span class="s">"http://user:password@proxy.example.com:8080"</span>
+</code></pre></div>
+<p>密码含特殊字符时需进行 URL encode（例如 <code>p@ss</code> → <code>p%40ss</code>）：</p>
+<div class="highlight"><pre class="highlight toml tab-toml"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code><span class="py">proxy_url</span> <span class="p">=</span> <span class="s">"http://user:p%40ss@proxy.example.com:8080"</span>
+</code></pre></div><h3 id="quick-start-step-3-connect-your-ai-client">第三步 — 连接 AI 客户端 </h3><div class="highlight"><pre class="highlight shell"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code>okx-trade-mcp setup <span class="nt">--client</span> &lt;client&gt;
+</code></pre></div>
+<table><thead>
+<tr>
+<th>客户端</th>
+<th><code>&lt;client&gt;</code> 值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Claude Desktop</td>
+<td><code>claude-desktop</code></td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td><code>claude-code</code></td>
+</tr>
+<tr>
+<td>Cursor</td>
+<td><code>cursor</code></td>
+</tr>
+<tr>
+<td>VS Code</td>
+<td><code>vscode</code></td>
+</tr>
+<tr>
+<td>Windsurf</td>
+<td><code>windsurf</code></td>
+</tr>
+</tbody></table>
+
+<p>如需手动配置，请参阅 GitHub 上的 <a href="https://github.com/okx/agent-trade-kit/blob/master/docs/configuration.md#client-setup-manual">Client Setup (Manual)</a>。</p>
+<h3 id="quick-start-step-4-try-it">第四步 — 试用 </h3>
+<p>打开您的 AI 客户端，输入：</p>
+<div class="highlight"><pre class="highlight plaintext"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code>OKX 上 BTC 现在的价格是多少？
+查看我的账户余额
+在模拟盘用市价单买入 100 USDT 的 BTC
+BTC-USDT-SWAP 的资金费率是多少？
+</code></pre></div><h1 id="mcp">MCP </h1>
+<p>MCP 服务器通过 <a href="https://modelcontextprotocol.io">Model Context Protocol</a> 标准向外暴露 OKX 交易工具。注册一次后，您的 AI Agent即可进行交易、查询和账户管理。</p>
+<h2 id="mcp-startup-options">启动选项 </h2>
+<table><thead>
+<tr>
+<th>使用场景</th>
+<th>命令</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>仅行情数据（无需 Key）</td>
+<td><code>okx-trade-mcp --modules market</code></td>
+</tr>
+<tr>
+<td>模拟盘，全功能</td>
+<td><code>okx-trade-mcp --profile demo --modules all</code></td>
+</tr>
+<tr>
+<td>实盘，只读监控</td>
+<td><code>okx-trade-mcp --profile live --read-only</code></td>
+</tr>
+<tr>
+<td>实盘，仅现货</td>
+<td><code>okx-trade-mcp --profile live --modules market,spot</code></td>
+</tr>
+<tr>
+<td>实盘，永续 + 期权</td>
+<td><code>okx-trade-mcp --profile live --modules market,swap,option</code></td>
+</tr>
+</tbody></table>
+
+<p>对于未列出的 MCP 客户端，可通过以下命令将其注册为 stdio 服务器：</p>
+<div class="highlight"><pre class="highlight shell"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code>okx-trade-mcp <span class="nt">--profile</span> &lt;demo|live&gt; <span class="nt">--modules</span> &lt;all|market|spot|swap|...&gt;
+</code></pre></div><h2 id="mcp-tools">工具列表 </h2>
+<p><code>market</code> 模块无需 API Key。其他模块均需要 <strong>读取</strong> 权限；写入操作还需额外开启 <strong>交易</strong> 权限。</p>
+<h3 id="market">market — 行情数据</h3>
+<table><thead>
+<tr>
+<th>工具</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>market_get_ticker</code></td>
+<td>单币对行情（最新价、24h 量、买一/卖一）</td>
+</tr>
+<tr>
+<td><code>market_get_tickers</code></td>
+<td>某类型全部行情（SPOT / SWAP / FUTURES / OPTION）</td>
+</tr>
+<tr>
+<td><code>market_get_orderbook</code></td>
+<td>盘口深度</td>
+</tr>
+<tr>
+<td><code>market_get_candles</code></td>
+<td>K线（最近 300 根）</td>
+</tr>
+<tr>
+<td><code>market_get_history_candles</code></td>
+<td>历史K线（2天前，最多3个月）</td>
+</tr>
+<tr>
+<td><code>market_get_index_ticker</code></td>
+<td>指数行情（如 BTC-USD）</td>
+</tr>
+<tr>
+<td><code>market_get_index_candles</code></td>
+<td>指数K线</td>
+</tr>
+<tr>
+<td><code>market_get_price_limit</code></td>
+<td>合约涨跌停价</td>
+</tr>
+<tr>
+<td><code>market_get_funding_rate</code></td>
+<td>永续合约当前资金费率</td>
+</tr>
+<tr>
+<td><code>market_get_funding_rate_history</code></td>
+<td>历史资金费率</td>
+</tr>
+<tr>
+<td><code>market_get_mark_price</code></td>
+<td>衍生品标记价格</td>
+</tr>
+<tr>
+<td><code>market_get_open_interest</code></td>
+<td>持仓量</td>
+</tr>
+<tr>
+<td><code>market_get_trades</code></td>
+<td>最新成交记录</td>
+</tr>
+</tbody></table>
+<h3 id="spot">spot — 现货交易</h3>
+<table><thead>
+<tr>
+<th>工具</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>spot_place_order</code></td>
+<td>下现货单（市价、限价、Post-only、FOK、IOC）</td>
+</tr>
+<tr>
+<td><code>spot_cancel_order</code></td>
+<td>撤销挂单</td>
+</tr>
+<tr>
+<td><code>spot_amend_order</code></td>
+<td>改价或改量</td>
+</tr>
+<tr>
+<td><code>spot_batch_place_orders</code></td>
+<td>批量下单（最多20笔）</td>
+</tr>
+<tr>
+<td><code>spot_batch_cancel_orders</code></td>
+<td>批量撤单</td>
+</tr>
+<tr>
+<td><code>spot_get_order</code></td>
+<td>查询单笔订单详情</td>
+</tr>
+<tr>
+<td><code>spot_get_open_orders</code></td>
+<td>查询当前挂单</td>
+</tr>
+<tr>
+<td><code>spot_get_order_history</code></td>
+<td>历史订单（7天内）</td>
+</tr>
+<tr>
+<td><code>spot_get_order_history_archive</code></td>
+<td>历史订单（7天前，最多3个月）</td>
+</tr>
+<tr>
+<td><code>spot_get_fills</code></td>
+<td>最新成交记录</td>
+</tr>
+<tr>
+<td><code>spot_get_fills_archive</code></td>
+<td>较早成交记录（1小时前，最多3个月）</td>
+</tr>
+</tbody></table>
+<h3 id="swap">swap — 永续合约</h3>
+<table><thead>
+<tr>
+<th>工具</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>swap_place_order</code></td>
+<td>下永续合约单</td>
+</tr>
+<tr>
+<td><code>swap_cancel_order</code></td>
+<td>撤销挂单</td>
+</tr>
+<tr>
+<td><code>swap_amend_order</code></td>
+<td>改价或改量</td>
+</tr>
+<tr>
+<td><code>swap_batch_place_orders</code></td>
+<td>批量下单（最多20笔）</td>
+</tr>
+<tr>
+<td><code>swap_batch_cancel_orders</code></td>
+<td>批量撤单</td>
+</tr>
+<tr>
+<td><code>swap_close_position</code></td>
+<td>一键平仓（指定合约）</td>
+</tr>
+<tr>
+<td><code>swap_get_order</code></td>
+<td>查询单笔订单详情</td>
+</tr>
+<tr>
+<td><code>swap_get_open_orders</code></td>
+<td>查询当前挂单</td>
+</tr>
+<tr>
+<td><code>swap_get_order_history</code></td>
+<td>历史订单（7天内）</td>
+</tr>
+<tr>
+<td><code>swap_get_positions</code></td>
+<td>当前持仓</td>
+</tr>
+<tr>
+<td><code>swap_get_fills</code></td>
+<td>最新成交记录</td>
+</tr>
+<tr>
+<td><code>swap_set_leverage</code></td>
+<td>设置杠杆倍数</td>
+</tr>
+<tr>
+<td><code>swap_get_leverage</code></td>
+<td>查询当前杠杆设置</td>
+</tr>
+</tbody></table>
+<h3 id="futures">futures — 交割合约</h3>
+<table><thead>
+<tr>
+<th>工具</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>futures_place_order</code></td>
+<td>下交割合约单</td>
+</tr>
+<tr>
+<td><code>futures_cancel_order</code></td>
+<td>撤销挂单</td>
+</tr>
+<tr>
+<td><code>futures_amend_order</code></td>
+<td>改价或改量</td>
+</tr>
+<tr>
+<td><code>futures_get_order</code></td>
+<td>查询单笔订单详情</td>
+</tr>
+<tr>
+<td><code>futures_get_open_orders</code></td>
+<td>查询当前挂单</td>
+</tr>
+<tr>
+<td><code>futures_get_order_history</code></td>
+<td>历史订单</td>
+</tr>
+<tr>
+<td><code>futures_get_positions</code></td>
+<td>当前持仓</td>
+</tr>
+<tr>
+<td><code>futures_get_fills</code></td>
+<td>最新成交记录</td>
+</tr>
+</tbody></table>
+<h3 id="option">option — 期权</h3>
+<table><thead>
+<tr>
+<th>工具</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>option_place_order</code></td>
+<td>期权下单（买入/卖出 call 或 put）</td>
+</tr>
+<tr>
+<td><code>option_cancel_order</code></td>
+<td>撤销挂单</td>
+</tr>
+<tr>
+<td><code>option_batch_cancel</code></td>
+<td>批量撤单（最多 20 条）</td>
+</tr>
+<tr>
+<td><code>option_amend_order</code></td>
+<td>改价或改量</td>
+</tr>
+<tr>
+<td><code>option_get_order</code></td>
+<td>查询单笔订单详情</td>
+</tr>
+<tr>
+<td><code>option_get_orders</code></td>
+<td>查询挂单或历史订单</td>
+</tr>
+<tr>
+<td><code>option_get_positions</code></td>
+<td>当前持仓（含 Greeks）</td>
+</tr>
+<tr>
+<td><code>option_get_fills</code></td>
+<td>成交记录</td>
+</tr>
+<tr>
+<td><code>option_get_instruments</code></td>
+<td>期权链（可用合约列表）</td>
+</tr>
+<tr>
+<td><code>option_get_greeks</code></td>
+<td>每个合约的 IV + Greeks（delta、gamma、theta、vega）</td>
+</tr>
+</tbody></table>
+<h3 id="account">account — 账户管理</h3>
+<table><thead>
+<tr>
+<th>工具</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>account_get_balance</code></td>
+<td>交易账户余额（指定币种或全部）</td>
+</tr>
+<tr>
+<td><code>account_get_asset_balance</code></td>
+<td>资金账户余额</td>
+</tr>
+<tr>
+<td><code>account_get_positions</code></td>
+<td>当前所有持仓</td>
+</tr>
+<tr>
+<td><code>account_get_positions_history</code></td>
+<td>历史持仓记录</td>
+</tr>
+<tr>
+<td><code>account_get_bills</code></td>
+<td>账单流水（7天内）</td>
+</tr>
+<tr>
+<td><code>account_get_bills_archive</code></td>
+<td>账单流水（7天前，最多3个月）</td>
+</tr>
+<tr>
+<td><code>account_get_fee_rates</code></td>
+<td>交易手续费率</td>
+</tr>
+<tr>
+<td><code>account_get_config</code></td>
+<td>账户配置（仓位模式、账户层级等）</td>
+</tr>
+<tr>
+<td><code>account_set_position_mode</code></td>
+<td>切换单向/双向持仓模式</td>
+</tr>
+<tr>
+<td><code>account_get_max_size</code></td>
+<td>指定合约的最大可开仓量</td>
+</tr>
+<tr>
+<td><code>account_get_max_withdrawal</code></td>
+<td>各币种最大可提余额</td>
+</tr>
+<tr>
+<td><code>account_get_leverage</code></td>
+<td>查询杠杆设置</td>
+</tr>
+<tr>
+<td><code>account_set_leverage</code></td>
+<td>设置杠杆（全局）</td>
+</tr>
+<tr>
+<td><code>account_get_audit_log</code></td>
+<td>查询本地工具调用审计日志</td>
+</tr>
+</tbody></table>
+<h3 id="bot">bot — 策略机器人</h3>
+<p><strong>网格（<code>bot.grid</code>）</strong></p>
+
+<table><thead>
+<tr>
+<th>工具</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>grid_get_orders</code></td>
+<td>列出运行中或历史网格机器人</td>
+</tr>
+<tr>
+<td><code>grid_get_order_details</code></td>
+<td>查询指定机器人的详情</td>
+</tr>
+<tr>
+<td><code>grid_get_sub_orders</code></td>
+<td>列出机器人子订单</td>
+</tr>
+<tr>
+<td><code>grid_create_order</code></td>
+<td>创建网格机器人（现货、合约或 Moon Grid）</td>
+</tr>
+<tr>
+<td><code>grid_stop_order</code></td>
+<td>停止运行中的机器人</td>
+</tr>
+</tbody></table>
+
+<p><strong>DCA（<code>bot.dca</code>）</strong></p>
+
+<table><thead>
+<tr>
+<th>工具</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>dca_create_order</code></td>
+<td>创建 DCA（马丁格尔）机器人</td>
+</tr>
+<tr>
+<td><code>dca_stop_order</code></td>
+<td>停止 DCA 策略</td>
+</tr>
+<tr>
+<td><code>dca_get_orders</code></td>
+<td>列出运行中或历史 DCA 策略</td>
+</tr>
+<tr>
+<td><code>dca_get_order_details</code></td>
+<td>查询单个 DCA 策略详情</td>
+</tr>
+<tr>
+<td><code>dca_get_sub_orders</code></td>
+<td>列出 DCA 策略生成的子订单</td>
+</tr>
+</tbody></table>
+<h1 id="cli">命令行 </h1>
+<p>命令行工具是独立的终端工具，无需 AI 客户端。</p>
+<div class="highlight"><pre class="highlight shell"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code><span class="c"># 行情数据</span>
+okx market ticker BTC-USDT
+okx market candles BTC-USDT <span class="nt">--bar</span> 1H <span class="nt">--limit</span> 10
+okx market funding-rate BTC-USDT-SWAP
+
+<span class="c"># 交易</span>
+okx spot place <span class="nt">--instId</span> BTC-USDT <span class="nt">--side</span> buy <span class="nt">--ordType</span> market <span class="nt">--sz</span> 100
+okx swap place <span class="nt">--instId</span> BTC-USDT-SWAP <span class="nt">--side</span> buy <span class="nt">--ordType</span> market <span class="nt">--sz</span> 1 <span class="nt">--posSide</span> long <span class="nt">--tdMode</span> cross
+
+<span class="c"># 账户</span>
+okx account balance
+okx account positions
+
+<span class="c"># 网格机器人</span>
+okx <span class="nt">--demo</span> bot grid create <span class="nt">--instId</span> BTC-USDT <span class="nt">--algoOrdType</span> grid <span class="se">\</span>
+  <span class="nt">--maxPx</span> 100000 <span class="nt">--minPx</span> 80000 <span class="nt">--gridNum</span> 10 <span class="nt">--quoteSz</span> 100
+
+<span class="c"># 管道与脚本</span>
+okx account balance <span class="nt">--json</span> | jq <span class="s1">'.[] | {ccy: .ccy, eq: .eq}'</span>
+okx market candles BTC-USDT <span class="nt">--bar</span> 1H <span class="nt">--limit</span> 200 <span class="nt">--json</span> | python3 analyze.py
+</code></pre></div>
+<p><strong><a href="https://github.com/okx/agent-trade-kit/blob/master/docs/cli-reference.md">完整 CLI 参考文档 →</a></strong></p>
+<h1 id="skills">Skills </h1>
+<p>Skills 是即插即用模块，适用于支持 <a href="https://github.com/okx/agent-skills">Skills 协议</a>的 AI 客户端。按需安装，支持单一或组合使用。</p>
+<div class="highlight"><pre class="highlight shell"><div class="copy-clipboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Copy to Clipboard</title><path d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></svg></div><code>npx skills add okx/agent-skills
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Skill</th>
+<th>包名</th>
+<th>说明</th>
+<th>鉴权</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>行情数据</td>
+<td><code>okx-cex-market</code></td>
+<td>实时获取最新行情、盘口深度、K线走势、资金费率、持仓量及指数数据。</td>
+<td>公开 · 无需 API Key</td>
+</tr>
+<tr>
+<td>交易</td>
+<td><code>okx-cex-trade</code></td>
+<td>支持现货、合约、期权及算法订单。一键下单、撤单、改单及批量操作，更支持 OCO、移动止盈止损及网格策略。</td>
+<td>需要 API Key</td>
+</tr>
+<tr>
+<td>资产组合</td>
+<td><code>okx-cex-portfolio</code></td>
+<td>追踪账户余额、当前持仓、收益明细、账单历史、费率等级与资金划转。只需一个 Skill，全盘资产尽在掌握。</td>
+<td>需要 API Key</td>
+</tr>
+<tr>
+<td>机器人</td>
+<td><code>okx-cex-bot</code></td>
+<td>自动化交易策略：现货网格、合约网格和定投（DCA）机器人。</td>
+<td>需要 API Key</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://github.com/okx/agent-skills">前往 GitHub 探索全部 Skills →</a></p>
+<h1 id="safety">安全 </h1>
+<p>OKX Agent Trade Kit 提供四层安全防护：</p>
+
+<ol>
+<li><strong>模拟盘模式</strong>（<code>--demo</code>）— 在模拟账户中交易，实盘资金不受影响。建议从这里开始。</li>
+<li><strong>只读模式</strong>（<code>--read-only</code>）— 仅允许数据查询，不可进行交易操作。</li>
+<li><strong>智能注册</strong> — 服务器在启动时检查您的 API Key 权限。如果该 Key 不具备交易权限，下单工具将不会暴露给 AI。</li>
+<li><strong>风险标签</strong> — 所有涉及资金操作的工具均标记为 <code>[CAUTION]</code>，提示 AI 在执行前进行确认。</li>
+</ol>
+
+<p>内置限流机制，防止对 OKX API 造成过载。</p>
+
+<blockquote>
+<p><strong>凭证安全：</strong> 切勿将您的 API Key、Secret Key 或 Passphrase 透露给任何 AI 模型或粘贴到对话框中。所有凭证应仅保存在本地配置文件（<code>~/.okx/config.toml</code>）中。由于 AI 行为具有不确定性，强烈建议使用<strong>子账户的 API Key</strong> 并仅开启所需的最小权限——除非有明确需求，否则不要开启提币权限。</p>
+</blockquote>
+<h1 id="faq">常见问题 </h1>
+<p><strong>问：Agent Trade Kit 能做什么？</strong></p>
+
+<p>它几乎涵盖欧易的所有核心功能。您可以查询价格、交易现货、合约和期权，设置高级订单（如止盈止损、移动止盈止损等），管理账户，甚至运行网格策略。这一切都可以通过自然语言或命令行完成。完整功能列表请查看 <a href="https://github.com/okx/agent-trade-kit">GitHub</a>。</p>
+
+<p><strong>问：我能用 Agent Trade Kit 交易合约、期权等产品吗？</strong></p>
+
+<p>这取决于您的欧易账户权限，而非 Agent Trade Kit 本身。该工具只能执行您的账户在欧易平台上已被允许的操作，它无法授予或修改您的任何交易权限。</p>
+
+<p>如果您的账户可以在欧易交易合约、永续或期权，Agent Trade Kit 同样可以帮您执行。但如果您所在地区或账户类型受到限制（例如，特定地区的用户无法访问衍生品），这些功能对您就不可用——Agent Trade Kit 无法绕过这些限制。</p>
+
+<p>可以把它理解成一个遥控器：遥控器只能控制电视本身支持的功能，它无法让电视播放没有订阅的频道。如果您不确定自己的账户能访问哪些产品，请查看欧易账户设置或联系欧易客服。</p>
+
+<p><strong>问：如果 AI 犯错，我会损失资金吗？</strong></p>
+
+<p>我们内置了四层安全机制。您可通过 <code>--demo</code> 模式进行模拟交易，或使用 <code>--read-only</code> 模式限制 AI 仅查询数据。在实盘操作真实资金前，AI 也会受到严格限制。AI 可能会犯错。请在执行前独立核对所有订单信息，用户需自行承担交易带来的损失。</p>
+
+<p><strong>问：支持哪些 AI 客户端？</strong></p>
+
+<p>支持所有兼容 <a href="https://modelcontextprotocol.io">MCP</a>（Model Context Protocol）协议的 AI 客户端，包括 Claude Desktop、Claude Code、Cursor、VS Code 以及各类自定义 Agent。目前它在您的本地设备上运行，未来我们将推出云端（Remote MCP）部署支持。我们可能会根据实际情况新增或移除对特定 AI 客户端的支持。</p>
+
+<p><strong>问：这个工具是免费的吗？</strong></p>
+
+<p>是的。Agent Trade Kit 基于 MIT 协议完全开源且免费。你只需要一个欧易账户和 API Key 即可进行交易（如果仅查询行情数据，甚至不需要 API Key）。</p>
+
+<p><strong>问：我的 API Key 安全吗？</strong></p>
+
+<p>绝对安全。所有程序都在本地运行。您的密钥仅保存在本地配置文件（<code>~/.okx/config.toml</code>）中，签名过程完全在本地完成，AI 永远无法获取您的敏感凭证。除欧易官方服务器外，没有任何数据会被发送到第三方。代码完全开源，欢迎在 <a href="https://github.com/okx/agent-trade-kit">GitHub</a> 上随时查看。另外您需要对自己的 API Key 的安全负责。</p>
+
+<p><strong>问：使用 Agent Trade Kit 有哪些风险？</strong></p>
+
+<p>Agent Trade Kit 是一个用于辅助 AI 自动化交易的工具包，不构成任何财务、投资、法律或税务建议。在使用前，请务必了解以下风险与责任：</p>
+
+<ul>
+<li><strong>AI 与市场风险：</strong> AI 模型可能会犯错、产生幻觉或基于过时信息行动。结合加密市场的剧烈波动、滑点、流动性限制或系统延迟，自动化操作可能导致重大资金损失。</li>
+<li><strong>第三方模型风险：</strong> 该工具包依赖于第三方大语言模型（LLM）。欧易无法控制、验证或背书这些模型，也不对其输出结果负责。本工具包按"原样"及"现有"状态提供，不作任何执行可靠性或可用性保证。</li>
+<li><strong>用户全责：</strong> 您需对自己的交易行为负全责。请务必：独立核实所有 AI 生成的信息、持续监控自动化策略，并妥善保管您的 API 凭证。强烈建议您遵循"最小权限"原则（除非绝对必要，切勿开启提币权限）、绑定受信任的 IP，并在实盘放大资金前进行小额测试。</li>
+<li><strong>免责与赔偿：</strong> 在法律允许的最大范围内，欧易对因使用本工具包或依赖 AI 输出而导致的任何直接或间接损失不承担法律责任。您同意赔偿并使欧易免受因您的使用行为或交易活动引发的任何索赔。</li>
+</ul>
+
+<p><strong>问：如何反馈问题或提交功能建议？</strong></p>
+
+<p>请在 <a href="https://github.com/okx/agent-trade-kit/issues">GitHub</a> 提交 Issue。若工具调用失败，请附上完整的错误信息块，其中包含诊断问题所需的全部信息。</p>
+<h1 id="links">相关链接 </h1>
+<ul>
+<li><strong>GitHub (MCP + CLI)</strong>: <a href="https://github.com/okx/agent-trade-kit">github.com/okx/agent-trade-kit</a></li>
+<li><strong>GitHub (Skills)</strong>: <a href="https://github.com/okx/agent-skills">github.com/okx/agent-skills</a></li>
+<li><strong>npm</strong>: <a href="https://www.npmjs.com/package/okx-trade-mcp"><code>okx-trade-mcp</code></a> · <a href="https://www.npmjs.com/package/okx-trade-cli"><code>okx-trade-cli</code></a></li>
+<li><strong>OKX 开放 API</strong>: <a href="https://www.okx.com/docs-v5/zh/">okx.com/docs-v5</a></li>
+<li><strong>问题反馈</strong>: <a href="https://github.com/okx/agent-trade-kit/issues">github.com/okx/agent-trade-kit/issues</a></li>
+<li><strong>许可证</strong>: MIT</li>
+</ul>
+<h1 id="community">社群 </h1>
+<p>欢迎加入 OKX AgentKit 官方 Telegram 社群，获取最新动态、使用技巧与交流讨论：</p>
+
+<p><a href="https://t.me/OKX_AgentKit">t.me/OKX_AgentKit</a></p>
+
+        </div>
+        <div class="dark-box">
+        </div>
+    </div>
+  
+
+</body></html>
